@@ -1,7 +1,8 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 const config = {
   entry: './src/quill-emoji.js',
@@ -25,18 +26,21 @@ const config = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'resolve-url-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              sourceMapContents: false
-            }
-          },
-        ],
+		  use: [
+			  MiniCssExtractPlugin.loader,
+			  'css-loader',
+			  'resolve-url-loader',
+			  {
+				  loader: "sass-loader",
+				  options: {
+					  sourceMap: true,
+					  sassOptions: {
+						  includePaths: [nodeModulesPath],
+						  outputStyle: 'expanded',
+					  },
+				  },
+			  },
+		  ],
       },
       {
         test: /\.(jpg|png|gif)$/i,
@@ -66,34 +70,12 @@ const config = {
     ]
   },
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          warnings: false,
-          compress: {
-            conditionals: true,
-            unused: true,
-            comparisons: true,
-            sequences: true,
-            dead_code: true,
-            evaluate: true,
-            join_vars: true,
-            if_return: true
-          },
-          output: {
-            comments: false
-          }
-        }
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+	  minimize: false,
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'quill-emoji.css',
-      chunkFilename: '[id].css',
-    })
-  ],
+  plugins: [new MiniCssExtractPlugin({
+	  filename: 'quill-emoji.css',
+	  chunkFilename: '[id].css',
+  })],
 };
 
 module.exports = config;
