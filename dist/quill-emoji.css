@@ -50,6 +50,11 @@
   vertical-align: middle;
 }
 
+.unmatched {
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
 .emoji_completions {
   list-style: none;
   margin: 0;
@@ -58,12 +63,13 @@
   background: #FFF;
   border-radius: 3px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-flow: column;
 }
 
 .emoji_completions li {
   margin: 2px 0;
   padding: 0;
-  display: inline-block;
 }
 
 .emoji_completions li:not(:last-of-type) {
@@ -117,11 +123,11 @@
 
 #emoji-palette {
   position: absolute;
-  max-width: 250px;
   z-index: 999;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .bem {
@@ -139,37 +145,39 @@
   margin-top: 20px;
 }
 
-.emoji-tab {
-  display: inline-table;
-  text-align: center;
-  width: 30px;
-  height: 100%;
-  min-height: 30px;
-  cursor: pointer;
-}
-
 #tab-toolbar {
-  background-color: #f7f7f7;
-  padding: 4px 4px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #f5f5f5;
+  padding: 5px 5px 0;
 }
 
 #tab-toolbar ul {
   margin: 0px;
   padding: 0px;
+  display: flex;
+}
+
+#tab-toolbar ul li {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 #tab-toolbar .active {
-  border-bottom: 3px solid #2ab27b;
+  background: #fff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 #tab-panel {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-gap: 10px;
+  padding: 10px;
   justify-content: center;
   max-height: 220px;
   overflow-y: scroll;
-  padding: 2px;
   background: #FFF;
 }
 
@@ -314,8 +322,8 @@ button.ql-table[value="append-col"]::after {
 }
 
 .ql-emojiblot {
-  display: inline-block;
-  vertical-align: text-top;
+  display: inline-flex;
+  align-items: center;
 }
 
 /*
@@ -327,7 +335,7 @@ button.ql-table[value="append-col"]::after {
   display: inline-flex;
   height: 20px;
   width: 20px;
-  background-image: url(8290ddbe0470dbcea05a.png);
+  background-image: url(/shared/images/fonts/quill-emoji/quill-emoji-sprite-min.png);
   background-size: 820px;
   background-repeat: no-repeat;
   text-indent: -999px;

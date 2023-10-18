@@ -1,6 +1,7 @@
 import Quill from 'quill';
 import Fuse from 'fuse.js';
 import emojiList from './emoji-list.js';
+import Keys from './keys.js';
 
 const Module = Quill.import('core/module');
 
@@ -36,26 +37,18 @@ class ShortNameEmoji extends Module {
     }
 
     quill.keyboard.addBinding({
-      // TODO: Once Quill supports using event.key change this to ":"
-      key: 186,  // ":" instead of 190 in Safari. Since it's the same key it doesn't matter if we register both.
+      key: ':',
       shiftKey: true,
     }, this.triggerPicker.bind(this));
 
     quill.keyboard.addBinding({
-      key: 59,  // gecko based browsers (firefox) use 59 as the keycode for semicolon, which makes a colon character when combined with shift
-      shiftKey: true,
-    }, this.triggerPicker.bind(this));
-
-    quill.keyboard.addBinding({
-      key: 39,  // ArrowRight
+      key: Keys.DOWN,
       collapsed: true
     }, this.handleArrow.bind(this));
+	quill.keyboard.bindings[Keys.DOWN].unshift(
+		quill.keyboard.bindings[Keys.DOWN].pop()
+	);
 
-    quill.keyboard.addBinding({
-      key: 40,  // ArrowRight
-      collapsed: true
-    }, this.handleArrow.bind(this));
-    // TODO: Add keybindings for Enter (13) and Tab (9) directly on the quill editor
   }
 
   triggerPicker(range, context) {
@@ -78,10 +71,10 @@ class ShortNameEmoji extends Module {
     }
 
     this.container.style.top = atSignBounds.top + atSignBounds.height + "px";
-    this.open = true;
-
     this.quill.on('text-change', this.onTextChange);
-    this.quill.once('selection-change', this.onSelectionChange);
+
+	this.open = true;
+
     this.onOpen && this.onOpen();
   }
 
@@ -112,7 +105,7 @@ class ShortNameEmoji extends Module {
     this.query = this.query.trim();
 
     let emojis = this.fuse.search(this.query);
-    emojis.sort(function (a, b) {
+	emojis = emojis.map(emoji => emoji.item).sort(function (a, b) {
       return a.emoji_order - b.emoji_order;
     });
 
@@ -194,8 +187,6 @@ class ShortNameEmoji extends Module {
         makeElement(
           'button', {type: "button"},
           makeElement("span", {className: "button-emoji ap ap-" + emoji.name, innerHTML: emoji.code_decimal }),
-          //makeElement('span', {className: "matched"}, this.query),
-          //makeElement('span', {className: "unmatched"}, emoji.shortname.slice(this.query.length+1))
           makeElement('span', {className: "unmatched"}, emoji.shortname)
         )
       );
@@ -236,7 +227,8 @@ class ShortNameEmoji extends Module {
     if (value) {
       this.quill.deleteText(this.atIndex, this.query.length + 1 + trailingDelete, Quill.sources.USER);
       this.quill.insertEmbed(this.atIndex, 'emoji', value, Quill.sources.USER);
-      setTimeout(() => this.quill.setSelection(this.atIndex + 1), 0);
+	  this.quill.insertText(this.atIndex + 1, ' ', Quill.sources.USER);
+      setTimeout(() => this.quill.setSelection(this.atIndex + 2), 0);
     }
     this.quill.focus();
     this.open = false;

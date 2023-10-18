@@ -9,1777 +9,12 @@
 		root["QuillEmoji"] = factory(root["Quill"]);
 })(self, (__WEBPACK_EXTERNAL_MODULE__436__) => {
 return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ 70:
-/***/ (function(module) {
-
-/*!
- * Fuse.js v3.6.1 - Lightweight fuzzy-search (http://fusejs.io)
- * 
- * Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
- * All Rights Reserved. Apache Software License 2.0
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- */
-!function(e,t){ true?module.exports=t():0}(this,function(){return function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=0)}([function(e,t,r){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var i=r(1),a=r(7),s=a.get,c=(a.deepValue,a.isArray),h=function(){function e(t,r){var n=r.location,o=void 0===n?0:n,i=r.distance,a=void 0===i?100:i,c=r.threshold,h=void 0===c?.6:c,l=r.maxPatternLength,u=void 0===l?32:l,f=r.caseSensitive,v=void 0!==f&&f,p=r.tokenSeparator,d=void 0===p?/ +/g:p,g=r.findAllMatches,y=void 0!==g&&g,m=r.minMatchCharLength,k=void 0===m?1:m,b=r.id,S=void 0===b?null:b,x=r.keys,M=void 0===x?[]:x,_=r.shouldSort,w=void 0===_||_,L=r.getFn,A=void 0===L?s:L,O=r.sortFn,C=void 0===O?function(e,t){return e.score-t.score}:O,j=r.tokenize,P=void 0!==j&&j,I=r.matchAllTokens,F=void 0!==I&&I,T=r.includeMatches,N=void 0!==T&&T,z=r.includeScore,E=void 0!==z&&z,W=r.verbose,K=void 0!==W&&W;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.options={location:o,distance:a,threshold:h,maxPatternLength:u,isCaseSensitive:v,tokenSeparator:d,findAllMatches:y,minMatchCharLength:k,id:S,keys:M,includeMatches:N,includeScore:E,shouldSort:w,getFn:A,sortFn:C,verbose:K,tokenize:P,matchAllTokens:F},this.setCollection(t),this._processKeys(M)}var t,r,a;return t=e,(r=[{key:"setCollection",value:function(e){return this.list=e,e}},{key:"_processKeys",value:function(e){if(this._keyWeights={},this._keyNames=[],e.length&&"string"==typeof e[0])for(var t=0,r=e.length;t<r;t+=1){var n=e[t];this._keyWeights[n]=1,this._keyNames.push(n)}else{for(var o=null,i=null,a=0,s=0,c=e.length;s<c;s+=1){var h=e[s];if(!h.hasOwnProperty("name"))throw new Error('Missing "name" property in key object');var l=h.name;if(this._keyNames.push(l),!h.hasOwnProperty("weight"))throw new Error('Missing "weight" property in key object');var u=h.weight;if(u<0||u>1)throw new Error('"weight" property in key must bein the range of [0, 1)');i=null==i?u:Math.max(i,u),o=null==o?u:Math.min(o,u),this._keyWeights[l]=u,a+=u}if(a>1)throw new Error("Total of weights cannot exceed 1")}}},{key:"search",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{limit:!1};this._log('---------\nSearch pattern: "'.concat(e,'"'));var r=this._prepareSearchers(e),n=r.tokenSearchers,o=r.fullSearcher,i=this._search(n,o);return this._computeScore(i),this.options.shouldSort&&this._sort(i),t.limit&&"number"==typeof t.limit&&(i=i.slice(0,t.limit)),this._format(i)}},{key:"_prepareSearchers",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",t=[];if(this.options.tokenize)for(var r=e.split(this.options.tokenSeparator),n=0,o=r.length;n<o;n+=1)t.push(new i(r[n],this.options));return{tokenSearchers:t,fullSearcher:new i(e,this.options)}}},{key:"_search",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1?arguments[1]:void 0,r=this.list,n={},o=[];if("string"==typeof r[0]){for(var i=0,a=r.length;i<a;i+=1)this._analyze({key:"",value:r[i],record:i,index:i},{resultMap:n,results:o,tokenSearchers:e,fullSearcher:t});return o}for(var s=0,c=r.length;s<c;s+=1)for(var h=r[s],l=0,u=this._keyNames.length;l<u;l+=1){var f=this._keyNames[l];this._analyze({key:f,value:this.options.getFn(h,f),record:h,index:s},{resultMap:n,results:o,tokenSearchers:e,fullSearcher:t})}return o}},{key:"_analyze",value:function(e,t){var r=this,n=e.key,o=e.arrayIndex,i=void 0===o?-1:o,a=e.value,s=e.record,h=e.index,l=t.tokenSearchers,u=void 0===l?[]:l,f=t.fullSearcher,v=t.resultMap,p=void 0===v?{}:v,d=t.results,g=void 0===d?[]:d;!function e(t,o,i,a){if(null!=o)if("string"==typeof o){var s=!1,h=-1,l=0;r._log("\nKey: ".concat(""===n?"--":n));var v=f.search(o);if(r._log('Full text: "'.concat(o,'", score: ').concat(v.score)),r.options.tokenize){for(var d=o.split(r.options.tokenSeparator),y=d.length,m=[],k=0,b=u.length;k<b;k+=1){var S=u[k];r._log('\nPattern: "'.concat(S.pattern,'"'));for(var x=!1,M=0;M<y;M+=1){var _=d[M],w=S.search(_),L={};w.isMatch?(L[_]=w.score,s=!0,x=!0,m.push(w.score)):(L[_]=1,r.options.matchAllTokens||m.push(1)),r._log('Token: "'.concat(_,'", score: ').concat(L[_]))}x&&(l+=1)}h=m[0];for(var A=m.length,O=1;O<A;O+=1)h+=m[O];h/=A,r._log("Token score average:",h)}var C=v.score;h>-1&&(C=(C+h)/2),r._log("Score average:",C);var j=!r.options.tokenize||!r.options.matchAllTokens||l>=u.length;if(r._log("\nCheck Matches: ".concat(j)),(s||v.isMatch)&&j){var P={key:n,arrayIndex:t,value:o,score:C};r.options.includeMatches&&(P.matchedIndices=v.matchedIndices);var I=p[a];I?I.output.push(P):(p[a]={item:i,output:[P]},g.push(p[a]))}}else if(c(o))for(var F=0,T=o.length;F<T;F+=1)e(F,o[F],i,a)}(i,a,s,h)}},{key:"_computeScore",value:function(e){this._log("\n\nComputing score:\n");for(var t=this._keyWeights,r=!!Object.keys(t).length,n=0,o=e.length;n<o;n+=1){for(var i=e[n],a=i.output,s=a.length,c=1,h=0;h<s;h+=1){var l=a[h],u=l.key,f=r?t[u]:1,v=0===l.score&&t&&t[u]>0?Number.EPSILON:l.score;c*=Math.pow(v,f)}i.score=c,this._log(i)}}},{key:"_sort",value:function(e){this._log("\n\nSorting...."),e.sort(this.options.sortFn)}},{key:"_format",value:function(e){var t=[];if(this.options.verbose){var r=[];this._log("\n\nOutput:\n\n",JSON.stringify(e,function(e,t){if("object"===n(t)&&null!==t){if(-1!==r.indexOf(t))return;r.push(t)}return t},2)),r=null}var o=[];this.options.includeMatches&&o.push(function(e,t){var r=e.output;t.matches=[];for(var n=0,o=r.length;n<o;n+=1){var i=r[n];if(0!==i.matchedIndices.length){var a={indices:i.matchedIndices,value:i.value};i.key&&(a.key=i.key),i.hasOwnProperty("arrayIndex")&&i.arrayIndex>-1&&(a.arrayIndex=i.arrayIndex),t.matches.push(a)}}}),this.options.includeScore&&o.push(function(e,t){t.score=e.score});for(var i=0,a=e.length;i<a;i+=1){var s=e[i];if(this.options.id&&(s.item=this.options.getFn(s.item,this.options.id)[0]),o.length){for(var c={item:s.item},h=0,l=o.length;h<l;h+=1)o[h](s,c);t.push(c)}else t.push(s.item)}return t}},{key:"_log",value:function(){var e;this.options.verbose&&(e=console).log.apply(e,arguments)}}])&&o(t.prototype,r),a&&o(t,a),e}();e.exports=h},function(e,t,r){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var o=r(2),i=r(3),a=r(6),s=function(){function e(t,r){var n=r.location,o=void 0===n?0:n,i=r.distance,s=void 0===i?100:i,c=r.threshold,h=void 0===c?.6:c,l=r.maxPatternLength,u=void 0===l?32:l,f=r.isCaseSensitive,v=void 0!==f&&f,p=r.tokenSeparator,d=void 0===p?/ +/g:p,g=r.findAllMatches,y=void 0!==g&&g,m=r.minMatchCharLength,k=void 0===m?1:m,b=r.includeMatches,S=void 0!==b&&b;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.options={location:o,distance:s,threshold:h,maxPatternLength:u,isCaseSensitive:v,tokenSeparator:d,findAllMatches:y,includeMatches:S,minMatchCharLength:k},this.pattern=v?t:t.toLowerCase(),this.pattern.length<=u&&(this.patternAlphabet=a(this.pattern))}var t,r,s;return t=e,(r=[{key:"search",value:function(e){var t=this.options,r=t.isCaseSensitive,n=t.includeMatches;if(r||(e=e.toLowerCase()),this.pattern===e){var a={isMatch:!0,score:0};return n&&(a.matchedIndices=[[0,e.length-1]]),a}var s=this.options,c=s.maxPatternLength,h=s.tokenSeparator;if(this.pattern.length>c)return o(e,this.pattern,h);var l=this.options,u=l.location,f=l.distance,v=l.threshold,p=l.findAllMatches,d=l.minMatchCharLength;return i(e,this.pattern,this.patternAlphabet,{location:u,distance:f,threshold:v,findAllMatches:p,minMatchCharLength:d,includeMatches:n})}}])&&n(t.prototype,r),s&&n(t,s),e}();e.exports=s},function(e,t){var r=/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g;e.exports=function(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:/ +/g,o=new RegExp(t.replace(r,"\\$&").replace(n,"|")),i=e.match(o),a=!!i,s=[];if(a)for(var c=0,h=i.length;c<h;c+=1){var l=i[c];s.push([e.indexOf(l),l.length-1])}return{score:a?.5:1,isMatch:a,matchedIndices:s}}},function(e,t,r){var n=r(4),o=r(5);e.exports=function(e,t,r,i){for(var a=i.location,s=void 0===a?0:a,c=i.distance,h=void 0===c?100:c,l=i.threshold,u=void 0===l?.6:l,f=i.findAllMatches,v=void 0!==f&&f,p=i.minMatchCharLength,d=void 0===p?1:p,g=i.includeMatches,y=void 0!==g&&g,m=s,k=e.length,b=u,S=e.indexOf(t,m),x=t.length,M=[],_=0;_<k;_+=1)M[_]=0;if(-1!==S){var w=n(t,{errors:0,currentLocation:S,expectedLocation:m,distance:h});if(b=Math.min(w,b),-1!==(S=e.lastIndexOf(t,m+x))){var L=n(t,{errors:0,currentLocation:S,expectedLocation:m,distance:h});b=Math.min(L,b)}}S=-1;for(var A=[],O=1,C=x+k,j=1<<(x<=31?x-1:30),P=0;P<x;P+=1){for(var I=0,F=C;I<F;){n(t,{errors:P,currentLocation:m+F,expectedLocation:m,distance:h})<=b?I=F:C=F,F=Math.floor((C-I)/2+I)}C=F;var T=Math.max(1,m-F+1),N=v?k:Math.min(m+F,k)+x,z=Array(N+2);z[N+1]=(1<<P)-1;for(var E=N;E>=T;E-=1){var W=E-1,K=r[e.charAt(W)];if(K&&(M[W]=1),z[E]=(z[E+1]<<1|1)&K,0!==P&&(z[E]|=(A[E+1]|A[E])<<1|1|A[E+1]),z[E]&j&&(O=n(t,{errors:P,currentLocation:W,expectedLocation:m,distance:h}))<=b){if(b=O,(S=W)<=m)break;T=Math.max(1,2*m-S)}}if(n(t,{errors:P+1,currentLocation:m,expectedLocation:m,distance:h})>b)break;A=z}var $={isMatch:S>=0,score:0===O?.001:O};return y&&($.matchedIndices=o(M,d)),$}},function(e,t){e.exports=function(e,t){var r=t.errors,n=void 0===r?0:r,o=t.currentLocation,i=void 0===o?0:o,a=t.expectedLocation,s=void 0===a?0:a,c=t.distance,h=void 0===c?100:c,l=n/e.length,u=Math.abs(s-i);return h?l+u/h:u?1:l}},function(e,t){e.exports=function(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,r=[],n=-1,o=-1,i=0,a=e.length;i<a;i+=1){var s=e[i];s&&-1===n?n=i:s||-1===n||((o=i-1)-n+1>=t&&r.push([n,o]),n=-1)}return e[i-1]&&i-n>=t&&r.push([n,i-1]),r}},function(e,t){e.exports=function(e){for(var t={},r=e.length,n=0;n<r;n+=1)t[e.charAt(n)]=0;for(var o=0;o<r;o+=1)t[e.charAt(o)]|=1<<r-o-1;return t}},function(e,t){var r=function(e){return Array.isArray?Array.isArray(e):"[object Array]"===Object.prototype.toString.call(e)},n=function(e){return null==e?"":function(e){if("string"==typeof e)return e;var t=e+"";return"0"==t&&1/e==-1/0?"-0":t}(e)},o=function(e){return"string"==typeof e},i=function(e){return"number"==typeof e};e.exports={get:function(e,t){var a=[];return function e(t,s){if(s){var c=s.indexOf("."),h=s,l=null;-1!==c&&(h=s.slice(0,c),l=s.slice(c+1));var u=t[h];if(null!=u)if(l||!o(u)&&!i(u))if(r(u))for(var f=0,v=u.length;f<v;f+=1)e(u[f],l);else l&&e(u,l);else a.push(n(u))}else a.push(t)}(e,t),a},isArray:r,isString:o,isNum:i,toString:n}}])});
-
-/***/ }),
-
-/***/ 347:
-/***/ (function(module) {
-
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(true)
-		module.exports = factory();
-	else {}
-})(typeof self !== 'undefined' ? self : this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __nested_webpack_require_578__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_578__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__nested_webpack_require_578__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__nested_webpack_require_578__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__nested_webpack_require_578__.d = function(exports, name, getter) {
-/******/ 		if(!__nested_webpack_require_578__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__nested_webpack_require_578__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__nested_webpack_require_578__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__nested_webpack_require_578__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__nested_webpack_require_578__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __nested_webpack_require_578__(__nested_webpack_require_578__.s = 9);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ParchmentError = /** @class */ (function (_super) {
-    __extends(ParchmentError, _super);
-    function ParchmentError(message) {
-        var _this = this;
-        message = '[Parchment] ' + message;
-        _this = _super.call(this, message) || this;
-        _this.message = message;
-        _this.name = _this.constructor.name;
-        return _this;
-    }
-    return ParchmentError;
-}(Error));
-exports.ParchmentError = ParchmentError;
-var attributes = {};
-var classes = {};
-var tags = {};
-var types = {};
-exports.DATA_KEY = '__blot';
-var Scope;
-(function (Scope) {
-    Scope[Scope["TYPE"] = 3] = "TYPE";
-    Scope[Scope["LEVEL"] = 12] = "LEVEL";
-    Scope[Scope["ATTRIBUTE"] = 13] = "ATTRIBUTE";
-    Scope[Scope["BLOT"] = 14] = "BLOT";
-    Scope[Scope["INLINE"] = 7] = "INLINE";
-    Scope[Scope["BLOCK"] = 11] = "BLOCK";
-    Scope[Scope["BLOCK_BLOT"] = 10] = "BLOCK_BLOT";
-    Scope[Scope["INLINE_BLOT"] = 6] = "INLINE_BLOT";
-    Scope[Scope["BLOCK_ATTRIBUTE"] = 9] = "BLOCK_ATTRIBUTE";
-    Scope[Scope["INLINE_ATTRIBUTE"] = 5] = "INLINE_ATTRIBUTE";
-    Scope[Scope["ANY"] = 15] = "ANY";
-})(Scope = exports.Scope || (exports.Scope = {}));
-function create(input, value) {
-    var match = query(input);
-    if (match == null) {
-        throw new ParchmentError("Unable to create " + input + " blot");
-    }
-    var BlotClass = match;
-    var node = 
-    // @ts-ignore
-    input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
-    return new BlotClass(node, value);
-}
-exports.create = create;
-function find(node, bubble) {
-    if (bubble === void 0) { bubble = false; }
-    if (node == null)
-        return null;
-    // @ts-ignore
-    if (node[exports.DATA_KEY] != null)
-        return node[exports.DATA_KEY].blot;
-    if (bubble)
-        return find(node.parentNode, bubble);
-    return null;
-}
-exports.find = find;
-function query(query, scope) {
-    if (scope === void 0) { scope = Scope.ANY; }
-    var match;
-    if (typeof query === 'string') {
-        match = types[query] || attributes[query];
-        // @ts-ignore
-    }
-    else if (query instanceof Text || query['nodeType'] === Node.TEXT_NODE) {
-        match = types['text'];
-    }
-    else if (typeof query === 'number') {
-        if (query & Scope.LEVEL & Scope.BLOCK) {
-            match = types['block'];
-        }
-        else if (query & Scope.LEVEL & Scope.INLINE) {
-            match = types['inline'];
-        }
-    }
-    else if (query instanceof HTMLElement) {
-        var names = (query.getAttribute('class') || '').split(/\s+/);
-        for (var i in names) {
-            match = classes[names[i]];
-            if (match)
-                break;
-        }
-        match = match || tags[query.tagName];
-    }
-    if (match == null)
-        return null;
-    // @ts-ignore
-    if (scope & Scope.LEVEL & match.scope && scope & Scope.TYPE & match.scope)
-        return match;
-    return null;
-}
-exports.query = query;
-function register() {
-    var Definitions = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        Definitions[_i] = arguments[_i];
-    }
-    if (Definitions.length > 1) {
-        return Definitions.map(function (d) {
-            return register(d);
-        });
-    }
-    var Definition = Definitions[0];
-    if (typeof Definition.blotName !== 'string' && typeof Definition.attrName !== 'string') {
-        throw new ParchmentError('Invalid definition');
-    }
-    else if (Definition.blotName === 'abstract') {
-        throw new ParchmentError('Cannot register abstract class');
-    }
-    types[Definition.blotName || Definition.attrName] = Definition;
-    if (typeof Definition.keyName === 'string') {
-        attributes[Definition.keyName] = Definition;
-    }
-    else {
-        if (Definition.className != null) {
-            classes[Definition.className] = Definition;
-        }
-        if (Definition.tagName != null) {
-            if (Array.isArray(Definition.tagName)) {
-                Definition.tagName = Definition.tagName.map(function (tagName) {
-                    return tagName.toUpperCase();
-                });
-            }
-            else {
-                Definition.tagName = Definition.tagName.toUpperCase();
-            }
-            var tagNames = Array.isArray(Definition.tagName) ? Definition.tagName : [Definition.tagName];
-            tagNames.forEach(function (tag) {
-                if (tags[tag] == null || Definition.className == null) {
-                    tags[tag] = Definition;
-                }
-            });
-        }
-    }
-    return Definition;
-}
-exports.register = register;
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __nested_webpack_require_8065__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Registry = __nested_webpack_require_8065__(0);
-var Attributor = /** @class */ (function () {
-    function Attributor(attrName, keyName, options) {
-        if (options === void 0) { options = {}; }
-        this.attrName = attrName;
-        this.keyName = keyName;
-        var attributeBit = Registry.Scope.TYPE & Registry.Scope.ATTRIBUTE;
-        if (options.scope != null) {
-            // Ignore type bits, force attribute bit
-            this.scope = (options.scope & Registry.Scope.LEVEL) | attributeBit;
-        }
-        else {
-            this.scope = Registry.Scope.ATTRIBUTE;
-        }
-        if (options.whitelist != null)
-            this.whitelist = options.whitelist;
-    }
-    Attributor.keys = function (node) {
-        return [].map.call(node.attributes, function (item) {
-            return item.name;
-        });
-    };
-    Attributor.prototype.add = function (node, value) {
-        if (!this.canAdd(node, value))
-            return false;
-        node.setAttribute(this.keyName, value);
-        return true;
-    };
-    Attributor.prototype.canAdd = function (node, value) {
-        var match = Registry.query(node, Registry.Scope.BLOT & (this.scope | Registry.Scope.TYPE));
-        if (match == null)
-            return false;
-        if (this.whitelist == null)
-            return true;
-        if (typeof value === 'string') {
-            return this.whitelist.indexOf(value.replace(/["']/g, '')) > -1;
-        }
-        else {
-            return this.whitelist.indexOf(value) > -1;
-        }
-    };
-    Attributor.prototype.remove = function (node) {
-        node.removeAttribute(this.keyName);
-    };
-    Attributor.prototype.value = function (node) {
-        var value = node.getAttribute(this.keyName);
-        if (this.canAdd(node, value) && value) {
-            return value;
-        }
-        return '';
-    };
-    return Attributor;
-}());
-exports.default = Attributor;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __nested_webpack_require_10111__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var linked_list_1 = __nested_webpack_require_10111__(11);
-var shadow_1 = __nested_webpack_require_10111__(5);
-var Registry = __nested_webpack_require_10111__(0);
-var ContainerBlot = /** @class */ (function (_super) {
-    __extends(ContainerBlot, _super);
-    function ContainerBlot(domNode) {
-        var _this = _super.call(this, domNode) || this;
-        _this.build();
-        return _this;
-    }
-    ContainerBlot.prototype.appendChild = function (other) {
-        this.insertBefore(other);
-    };
-    ContainerBlot.prototype.attach = function () {
-        _super.prototype.attach.call(this);
-        this.children.forEach(function (child) {
-            child.attach();
-        });
-    };
-    ContainerBlot.prototype.build = function () {
-        var _this = this;
-        this.children = new linked_list_1.default();
-        // Need to be reversed for if DOM nodes already in order
-        [].slice
-            .call(this.domNode.childNodes)
-            .reverse()
-            .forEach(function (node) {
-            try {
-                var child = makeBlot(node);
-                _this.insertBefore(child, _this.children.head || undefined);
-            }
-            catch (err) {
-                if (err instanceof Registry.ParchmentError)
-                    return;
-                else
-                    throw err;
-            }
-        });
-    };
-    ContainerBlot.prototype.deleteAt = function (index, length) {
-        if (index === 0 && length === this.length()) {
-            return this.remove();
-        }
-        this.children.forEachAt(index, length, function (child, offset, length) {
-            child.deleteAt(offset, length);
-        });
-    };
-    ContainerBlot.prototype.descendant = function (criteria, index) {
-        var _a = this.children.find(index), child = _a[0], offset = _a[1];
-        if ((criteria.blotName == null && criteria(child)) ||
-            (criteria.blotName != null && child instanceof criteria)) {
-            return [child, offset];
-        }
-        else if (child instanceof ContainerBlot) {
-            return child.descendant(criteria, offset);
-        }
-        else {
-            return [null, -1];
-        }
-    };
-    ContainerBlot.prototype.descendants = function (criteria, index, length) {
-        if (index === void 0) { index = 0; }
-        if (length === void 0) { length = Number.MAX_VALUE; }
-        var descendants = [];
-        var lengthLeft = length;
-        this.children.forEachAt(index, length, function (child, index, length) {
-            if ((criteria.blotName == null && criteria(child)) ||
-                (criteria.blotName != null && child instanceof criteria)) {
-                descendants.push(child);
-            }
-            if (child instanceof ContainerBlot) {
-                descendants = descendants.concat(child.descendants(criteria, index, lengthLeft));
-            }
-            lengthLeft -= length;
-        });
-        return descendants;
-    };
-    ContainerBlot.prototype.detach = function () {
-        this.children.forEach(function (child) {
-            child.detach();
-        });
-        _super.prototype.detach.call(this);
-    };
-    ContainerBlot.prototype.formatAt = function (index, length, name, value) {
-        this.children.forEachAt(index, length, function (child, offset, length) {
-            child.formatAt(offset, length, name, value);
-        });
-    };
-    ContainerBlot.prototype.insertAt = function (index, value, def) {
-        var _a = this.children.find(index), child = _a[0], offset = _a[1];
-        if (child) {
-            child.insertAt(offset, value, def);
-        }
-        else {
-            var blot = def == null ? Registry.create('text', value) : Registry.create(value, def);
-            this.appendChild(blot);
-        }
-    };
-    ContainerBlot.prototype.insertBefore = function (childBlot, refBlot) {
-        if (this.statics.allowedChildren != null &&
-            !this.statics.allowedChildren.some(function (child) {
-                return childBlot instanceof child;
-            })) {
-            throw new Registry.ParchmentError("Cannot insert " + childBlot.statics.blotName + " into " + this.statics.blotName);
-        }
-        childBlot.insertInto(this, refBlot);
-    };
-    ContainerBlot.prototype.length = function () {
-        return this.children.reduce(function (memo, child) {
-            return memo + child.length();
-        }, 0);
-    };
-    ContainerBlot.prototype.moveChildren = function (targetParent, refNode) {
-        this.children.forEach(function (child) {
-            targetParent.insertBefore(child, refNode);
-        });
-    };
-    ContainerBlot.prototype.optimize = function (context) {
-        _super.prototype.optimize.call(this, context);
-        if (this.children.length === 0) {
-            if (this.statics.defaultChild != null) {
-                var child = Registry.create(this.statics.defaultChild);
-                this.appendChild(child);
-                child.optimize(context);
-            }
-            else {
-                this.remove();
-            }
-        }
-    };
-    ContainerBlot.prototype.path = function (index, inclusive) {
-        if (inclusive === void 0) { inclusive = false; }
-        var _a = this.children.find(index, inclusive), child = _a[0], offset = _a[1];
-        var position = [[this, index]];
-        if (child instanceof ContainerBlot) {
-            return position.concat(child.path(offset, inclusive));
-        }
-        else if (child != null) {
-            position.push([child, offset]);
-        }
-        return position;
-    };
-    ContainerBlot.prototype.removeChild = function (child) {
-        this.children.remove(child);
-    };
-    ContainerBlot.prototype.replace = function (target) {
-        if (target instanceof ContainerBlot) {
-            target.moveChildren(this);
-        }
-        _super.prototype.replace.call(this, target);
-    };
-    ContainerBlot.prototype.split = function (index, force) {
-        if (force === void 0) { force = false; }
-        if (!force) {
-            if (index === 0)
-                return this;
-            if (index === this.length())
-                return this.next;
-        }
-        var after = this.clone();
-        this.parent.insertBefore(after, this.next);
-        this.children.forEachAt(index, this.length(), function (child, offset, length) {
-            child = child.split(offset, force);
-            after.appendChild(child);
-        });
-        return after;
-    };
-    ContainerBlot.prototype.unwrap = function () {
-        this.moveChildren(this.parent, this.next);
-        this.remove();
-    };
-    ContainerBlot.prototype.update = function (mutations, context) {
-        var _this = this;
-        var addedNodes = [];
-        var removedNodes = [];
-        mutations.forEach(function (mutation) {
-            if (mutation.target === _this.domNode && mutation.type === 'childList') {
-                addedNodes.push.apply(addedNodes, mutation.addedNodes);
-                removedNodes.push.apply(removedNodes, mutation.removedNodes);
-            }
-        });
-        removedNodes.forEach(function (node) {
-            // Check node has actually been removed
-            // One exception is Chrome does not immediately remove IFRAMEs
-            // from DOM but MutationRecord is correct in its reported removal
-            if (node.parentNode != null &&
-                // @ts-ignore
-                node.tagName !== 'IFRAME' &&
-                document.body.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_CONTAINED_BY) {
-                return;
-            }
-            var blot = Registry.find(node);
-            if (blot == null)
-                return;
-            if (blot.domNode.parentNode == null || blot.domNode.parentNode === _this.domNode) {
-                blot.detach();
-            }
-        });
-        addedNodes
-            .filter(function (node) {
-            return node.parentNode == _this.domNode;
-        })
-            .sort(function (a, b) {
-            if (a === b)
-                return 0;
-            if (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) {
-                return 1;
-            }
-            return -1;
-        })
-            .forEach(function (node) {
-            var refBlot = null;
-            if (node.nextSibling != null) {
-                refBlot = Registry.find(node.nextSibling);
-            }
-            var blot = makeBlot(node);
-            if (blot.next != refBlot || blot.next == null) {
-                if (blot.parent != null) {
-                    blot.parent.removeChild(_this);
-                }
-                _this.insertBefore(blot, refBlot || undefined);
-            }
-        });
-    };
-    return ContainerBlot;
-}(shadow_1.default));
-function makeBlot(node) {
-    var blot = Registry.find(node);
-    if (blot == null) {
-        try {
-            blot = Registry.create(node);
-        }
-        catch (e) {
-            blot = Registry.create(Registry.Scope.INLINE);
-            [].slice.call(node.childNodes).forEach(function (child) {
-                // @ts-ignore
-                blot.domNode.appendChild(child);
-            });
-            if (node.parentNode) {
-                node.parentNode.replaceChild(blot.domNode, node);
-            }
-            blot.attach();
-        }
-    }
-    return blot;
-}
-exports.default = ContainerBlot;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __nested_webpack_require_20035__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var attributor_1 = __nested_webpack_require_20035__(1);
-var store_1 = __nested_webpack_require_20035__(6);
-var container_1 = __nested_webpack_require_20035__(2);
-var Registry = __nested_webpack_require_20035__(0);
-var FormatBlot = /** @class */ (function (_super) {
-    __extends(FormatBlot, _super);
-    function FormatBlot(domNode) {
-        var _this = _super.call(this, domNode) || this;
-        _this.attributes = new store_1.default(_this.domNode);
-        return _this;
-    }
-    FormatBlot.formats = function (domNode) {
-        if (typeof this.tagName === 'string') {
-            return true;
-        }
-        else if (Array.isArray(this.tagName)) {
-            return domNode.tagName.toLowerCase();
-        }
-        return undefined;
-    };
-    FormatBlot.prototype.format = function (name, value) {
-        var format = Registry.query(name);
-        if (format instanceof attributor_1.default) {
-            this.attributes.attribute(format, value);
-        }
-        else if (value) {
-            if (format != null && (name !== this.statics.blotName || this.formats()[name] !== value)) {
-                this.replaceWith(name, value);
-            }
-        }
-    };
-    FormatBlot.prototype.formats = function () {
-        var formats = this.attributes.values();
-        var format = this.statics.formats(this.domNode);
-        if (format != null) {
-            formats[this.statics.blotName] = format;
-        }
-        return formats;
-    };
-    FormatBlot.prototype.replaceWith = function (name, value) {
-        var replacement = _super.prototype.replaceWith.call(this, name, value);
-        this.attributes.copy(replacement);
-        return replacement;
-    };
-    FormatBlot.prototype.update = function (mutations, context) {
-        var _this = this;
-        _super.prototype.update.call(this, mutations, context);
-        if (mutations.some(function (mutation) {
-            return mutation.target === _this.domNode && mutation.type === 'attributes';
-        })) {
-            this.attributes.build();
-        }
-    };
-    FormatBlot.prototype.wrap = function (name, value) {
-        var wrapper = _super.prototype.wrap.call(this, name, value);
-        if (wrapper instanceof FormatBlot && wrapper.statics.scope === this.statics.scope) {
-            this.attributes.move(wrapper);
-        }
-        return wrapper;
-    };
-    return FormatBlot;
-}(container_1.default));
-exports.default = FormatBlot;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __nested_webpack_require_23054__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var shadow_1 = __nested_webpack_require_23054__(5);
-var Registry = __nested_webpack_require_23054__(0);
-var LeafBlot = /** @class */ (function (_super) {
-    __extends(LeafBlot, _super);
-    function LeafBlot() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    LeafBlot.value = function (domNode) {
-        return true;
-    };
-    LeafBlot.prototype.index = function (node, offset) {
-        if (this.domNode === node ||
-            this.domNode.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_CONTAINED_BY) {
-            return Math.min(offset, 1);
-        }
-        return -1;
-    };
-    LeafBlot.prototype.position = function (index, inclusive) {
-        var offset = [].indexOf.call(this.parent.domNode.childNodes, this.domNode);
-        if (index > 0)
-            offset += 1;
-        return [this.parent.domNode, offset];
-    };
-    LeafBlot.prototype.value = function () {
-        return _a = {}, _a[this.statics.blotName] = this.statics.value(this.domNode) || true, _a;
-        var _a;
-    };
-    LeafBlot.scope = Registry.Scope.INLINE_BLOT;
-    return LeafBlot;
-}(shadow_1.default));
-exports.default = LeafBlot;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __nested_webpack_require_24839__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Registry = __nested_webpack_require_24839__(0);
-var ShadowBlot = /** @class */ (function () {
-    function ShadowBlot(domNode) {
-        this.domNode = domNode;
-        // @ts-ignore
-        this.domNode[Registry.DATA_KEY] = { blot: this };
-    }
-    Object.defineProperty(ShadowBlot.prototype, "statics", {
-        // Hack for accessing inherited static methods
-        get: function () {
-            return this.constructor;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ShadowBlot.create = function (value) {
-        if (this.tagName == null) {
-            throw new Registry.ParchmentError('Blot definition missing tagName');
-        }
-        var node;
-        if (Array.isArray(this.tagName)) {
-            if (typeof value === 'string') {
-                value = value.toUpperCase();
-                if (parseInt(value).toString() === value) {
-                    value = parseInt(value);
-                }
-            }
-            if (typeof value === 'number') {
-                node = document.createElement(this.tagName[value - 1]);
-            }
-            else if (this.tagName.indexOf(value) > -1) {
-                node = document.createElement(value);
-            }
-            else {
-                node = document.createElement(this.tagName[0]);
-            }
-        }
-        else {
-            node = document.createElement(this.tagName);
-        }
-        if (this.className) {
-            node.classList.add(this.className);
-        }
-        return node;
-    };
-    ShadowBlot.prototype.attach = function () {
-        if (this.parent != null) {
-            this.scroll = this.parent.scroll;
-        }
-    };
-    ShadowBlot.prototype.clone = function () {
-        var domNode = this.domNode.cloneNode(false);
-        return Registry.create(domNode);
-    };
-    ShadowBlot.prototype.detach = function () {
-        if (this.parent != null)
-            this.parent.removeChild(this);
-        // @ts-ignore
-        delete this.domNode[Registry.DATA_KEY];
-    };
-    ShadowBlot.prototype.deleteAt = function (index, length) {
-        var blot = this.isolate(index, length);
-        blot.remove();
-    };
-    ShadowBlot.prototype.formatAt = function (index, length, name, value) {
-        var blot = this.isolate(index, length);
-        if (Registry.query(name, Registry.Scope.BLOT) != null && value) {
-            blot.wrap(name, value);
-        }
-        else if (Registry.query(name, Registry.Scope.ATTRIBUTE) != null) {
-            var parent_1 = Registry.create(this.statics.scope);
-            blot.wrap(parent_1);
-            parent_1.format(name, value);
-        }
-    };
-    ShadowBlot.prototype.insertAt = function (index, value, def) {
-        var blot = def == null ? Registry.create('text', value) : Registry.create(value, def);
-        var ref = this.split(index);
-        this.parent.insertBefore(blot, ref);
-    };
-    ShadowBlot.prototype.insertInto = function (parentBlot, refBlot) {
-        if (refBlot === void 0) { refBlot = null; }
-        if (this.parent != null) {
-            this.parent.children.remove(this);
-        }
-        var refDomNode = null;
-        parentBlot.children.insertBefore(this, refBlot);
-        if (refBlot != null) {
-            refDomNode = refBlot.domNode;
-        }
-        if (this.domNode.parentNode != parentBlot.domNode ||
-            this.domNode.nextSibling != refDomNode) {
-            parentBlot.domNode.insertBefore(this.domNode, refDomNode);
-        }
-        this.parent = parentBlot;
-        this.attach();
-    };
-    ShadowBlot.prototype.isolate = function (index, length) {
-        var target = this.split(index);
-        target.split(length);
-        return target;
-    };
-    ShadowBlot.prototype.length = function () {
-        return 1;
-    };
-    ShadowBlot.prototype.offset = function (root) {
-        if (root === void 0) { root = this.parent; }
-        if (this.parent == null || this == root)
-            return 0;
-        return this.parent.children.offset(this) + this.parent.offset(root);
-    };
-    ShadowBlot.prototype.optimize = function (context) {
-        // TODO clean up once we use WeakMap
-        // @ts-ignore
-        if (this.domNode[Registry.DATA_KEY] != null) {
-            // @ts-ignore
-            delete this.domNode[Registry.DATA_KEY].mutations;
-        }
-    };
-    ShadowBlot.prototype.remove = function () {
-        if (this.domNode.parentNode != null) {
-            this.domNode.parentNode.removeChild(this.domNode);
-        }
-        this.detach();
-    };
-    ShadowBlot.prototype.replace = function (target) {
-        if (target.parent == null)
-            return;
-        target.parent.insertBefore(this, target.next);
-        target.remove();
-    };
-    ShadowBlot.prototype.replaceWith = function (name, value) {
-        var replacement = typeof name === 'string' ? Registry.create(name, value) : name;
-        replacement.replace(this);
-        return replacement;
-    };
-    ShadowBlot.prototype.split = function (index, force) {
-        return index === 0 ? this : this.next;
-    };
-    ShadowBlot.prototype.update = function (mutations, context) {
-        // Nothing to do by default
-    };
-    ShadowBlot.prototype.wrap = function (name, value) {
-        var wrapper = typeof name === 'string' ? Registry.create(name, value) : name;
-        if (this.parent != null) {
-            this.parent.insertBefore(wrapper, this.next);
-        }
-        wrapper.appendChild(this);
-        return wrapper;
-    };
-    ShadowBlot.blotName = 'abstract';
-    return ShadowBlot;
-}());
-exports.default = ShadowBlot;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __nested_webpack_require_30541__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var attributor_1 = __nested_webpack_require_30541__(1);
-var class_1 = __nested_webpack_require_30541__(7);
-var style_1 = __nested_webpack_require_30541__(8);
-var Registry = __nested_webpack_require_30541__(0);
-var AttributorStore = /** @class */ (function () {
-    function AttributorStore(domNode) {
-        this.attributes = {};
-        this.domNode = domNode;
-        this.build();
-    }
-    AttributorStore.prototype.attribute = function (attribute, value) {
-        // verb
-        if (value) {
-            if (attribute.add(this.domNode, value)) {
-                if (attribute.value(this.domNode) != null) {
-                    this.attributes[attribute.attrName] = attribute;
-                }
-                else {
-                    delete this.attributes[attribute.attrName];
-                }
-            }
-        }
-        else {
-            attribute.remove(this.domNode);
-            delete this.attributes[attribute.attrName];
-        }
-    };
-    AttributorStore.prototype.build = function () {
-        var _this = this;
-        this.attributes = {};
-        var attributes = attributor_1.default.keys(this.domNode);
-        var classes = class_1.default.keys(this.domNode);
-        var styles = style_1.default.keys(this.domNode);
-        attributes
-            .concat(classes)
-            .concat(styles)
-            .forEach(function (name) {
-            var attr = Registry.query(name, Registry.Scope.ATTRIBUTE);
-            if (attr instanceof attributor_1.default) {
-                _this.attributes[attr.attrName] = attr;
-            }
-        });
-    };
-    AttributorStore.prototype.copy = function (target) {
-        var _this = this;
-        Object.keys(this.attributes).forEach(function (key) {
-            var value = _this.attributes[key].value(_this.domNode);
-            target.format(key, value);
-        });
-    };
-    AttributorStore.prototype.move = function (target) {
-        var _this = this;
-        this.copy(target);
-        Object.keys(this.attributes).forEach(function (key) {
-            _this.attributes[key].remove(_this.domNode);
-        });
-        this.attributes = {};
-    };
-    AttributorStore.prototype.values = function () {
-        var _this = this;
-        return Object.keys(this.attributes).reduce(function (attributes, name) {
-            attributes[name] = _this.attributes[name].value(_this.domNode);
-            return attributes;
-        }, {});
-    };
-    return AttributorStore;
-}());
-exports.default = AttributorStore;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __nested_webpack_require_33135__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var attributor_1 = __nested_webpack_require_33135__(1);
-function match(node, prefix) {
-    var className = node.getAttribute('class') || '';
-    return className.split(/\s+/).filter(function (name) {
-        return name.indexOf(prefix + "-") === 0;
-    });
-}
-var ClassAttributor = /** @class */ (function (_super) {
-    __extends(ClassAttributor, _super);
-    function ClassAttributor() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ClassAttributor.keys = function (node) {
-        return (node.getAttribute('class') || '').split(/\s+/).map(function (name) {
-            return name
-                .split('-')
-                .slice(0, -1)
-                .join('-');
-        });
-    };
-    ClassAttributor.prototype.add = function (node, value) {
-        if (!this.canAdd(node, value))
-            return false;
-        this.remove(node);
-        node.classList.add(this.keyName + "-" + value);
-        return true;
-    };
-    ClassAttributor.prototype.remove = function (node) {
-        var matches = match(node, this.keyName);
-        matches.forEach(function (name) {
-            node.classList.remove(name);
-        });
-        if (node.classList.length === 0) {
-            node.removeAttribute('class');
-        }
-    };
-    ClassAttributor.prototype.value = function (node) {
-        var result = match(node, this.keyName)[0] || '';
-        var value = result.slice(this.keyName.length + 1); // +1 for hyphen
-        return this.canAdd(node, value) ? value : '';
-    };
-    return ClassAttributor;
-}(attributor_1.default));
-exports.default = ClassAttributor;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __nested_webpack_require_35377__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var attributor_1 = __nested_webpack_require_35377__(1);
-function camelize(name) {
-    var parts = name.split('-');
-    var rest = parts
-        .slice(1)
-        .map(function (part) {
-        return part[0].toUpperCase() + part.slice(1);
-    })
-        .join('');
-    return parts[0] + rest;
-}
-var StyleAttributor = /** @class */ (function (_super) {
-    __extends(StyleAttributor, _super);
-    function StyleAttributor() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    StyleAttributor.keys = function (node) {
-        return (node.getAttribute('style') || '').split(';').map(function (value) {
-            var arr = value.split(':');
-            return arr[0].trim();
-        });
-    };
-    StyleAttributor.prototype.add = function (node, value) {
-        if (!this.canAdd(node, value))
-            return false;
-        // @ts-ignore
-        node.style[camelize(this.keyName)] = value;
-        return true;
-    };
-    StyleAttributor.prototype.remove = function (node) {
-        // @ts-ignore
-        node.style[camelize(this.keyName)] = '';
-        if (!node.getAttribute('style')) {
-            node.removeAttribute('style');
-        }
-    };
-    StyleAttributor.prototype.value = function (node) {
-        // @ts-ignore
-        var value = node.style[camelize(this.keyName)];
-        return this.canAdd(node, value) ? value : '';
-    };
-    return StyleAttributor;
-}(attributor_1.default));
-exports.default = StyleAttributor;
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __nested_webpack_require_37481__) {
-
-module.exports = __nested_webpack_require_37481__(10);
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __nested_webpack_require_37601__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var container_1 = __nested_webpack_require_37601__(2);
-var format_1 = __nested_webpack_require_37601__(3);
-var leaf_1 = __nested_webpack_require_37601__(4);
-var scroll_1 = __nested_webpack_require_37601__(12);
-var inline_1 = __nested_webpack_require_37601__(13);
-var block_1 = __nested_webpack_require_37601__(14);
-var embed_1 = __nested_webpack_require_37601__(15);
-var text_1 = __nested_webpack_require_37601__(16);
-var attributor_1 = __nested_webpack_require_37601__(1);
-var class_1 = __nested_webpack_require_37601__(7);
-var style_1 = __nested_webpack_require_37601__(8);
-var store_1 = __nested_webpack_require_37601__(6);
-var Registry = __nested_webpack_require_37601__(0);
-var Parchment = {
-    Scope: Registry.Scope,
-    create: Registry.create,
-    find: Registry.find,
-    query: Registry.query,
-    register: Registry.register,
-    Container: container_1.default,
-    Format: format_1.default,
-    Leaf: leaf_1.default,
-    Embed: embed_1.default,
-    Scroll: scroll_1.default,
-    Block: block_1.default,
-    Inline: inline_1.default,
-    Text: text_1.default,
-    Attributor: {
-        Attribute: attributor_1.default,
-        Class: class_1.default,
-        Style: style_1.default,
-        Store: store_1.default,
-    },
-};
-exports.default = Parchment;
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var LinkedList = /** @class */ (function () {
-    function LinkedList() {
-        this.head = this.tail = null;
-        this.length = 0;
-    }
-    LinkedList.prototype.append = function () {
-        var nodes = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            nodes[_i] = arguments[_i];
-        }
-        this.insertBefore(nodes[0], null);
-        if (nodes.length > 1) {
-            this.append.apply(this, nodes.slice(1));
-        }
-    };
-    LinkedList.prototype.contains = function (node) {
-        var cur, next = this.iterator();
-        while ((cur = next())) {
-            if (cur === node)
-                return true;
-        }
-        return false;
-    };
-    LinkedList.prototype.insertBefore = function (node, refNode) {
-        if (!node)
-            return;
-        node.next = refNode;
-        if (refNode != null) {
-            node.prev = refNode.prev;
-            if (refNode.prev != null) {
-                refNode.prev.next = node;
-            }
-            refNode.prev = node;
-            if (refNode === this.head) {
-                this.head = node;
-            }
-        }
-        else if (this.tail != null) {
-            this.tail.next = node;
-            node.prev = this.tail;
-            this.tail = node;
-        }
-        else {
-            node.prev = null;
-            this.head = this.tail = node;
-        }
-        this.length += 1;
-    };
-    LinkedList.prototype.offset = function (target) {
-        var index = 0, cur = this.head;
-        while (cur != null) {
-            if (cur === target)
-                return index;
-            index += cur.length();
-            cur = cur.next;
-        }
-        return -1;
-    };
-    LinkedList.prototype.remove = function (node) {
-        if (!this.contains(node))
-            return;
-        if (node.prev != null)
-            node.prev.next = node.next;
-        if (node.next != null)
-            node.next.prev = node.prev;
-        if (node === this.head)
-            this.head = node.next;
-        if (node === this.tail)
-            this.tail = node.prev;
-        this.length -= 1;
-    };
-    LinkedList.prototype.iterator = function (curNode) {
-        if (curNode === void 0) { curNode = this.head; }
-        // TODO use yield when we can
-        return function () {
-            var ret = curNode;
-            if (curNode != null)
-                curNode = curNode.next;
-            return ret;
-        };
-    };
-    LinkedList.prototype.find = function (index, inclusive) {
-        if (inclusive === void 0) { inclusive = false; }
-        var cur, next = this.iterator();
-        while ((cur = next())) {
-            var length_1 = cur.length();
-            if (index < length_1 ||
-                (inclusive && index === length_1 && (cur.next == null || cur.next.length() !== 0))) {
-                return [cur, index];
-            }
-            index -= length_1;
-        }
-        return [null, 0];
-    };
-    LinkedList.prototype.forEach = function (callback) {
-        var cur, next = this.iterator();
-        while ((cur = next())) {
-            callback(cur);
-        }
-    };
-    LinkedList.prototype.forEachAt = function (index, length, callback) {
-        if (length <= 0)
-            return;
-        var _a = this.find(index), startNode = _a[0], offset = _a[1];
-        var cur, curIndex = index - offset, next = this.iterator(startNode);
-        while ((cur = next()) && curIndex < index + length) {
-            var curLength = cur.length();
-            if (index > curIndex) {
-                callback(cur, index - curIndex, Math.min(length, curIndex + curLength - index));
-            }
-            else {
-                callback(cur, 0, Math.min(curLength, index + length - curIndex));
-            }
-            curIndex += curLength;
-        }
-    };
-    LinkedList.prototype.map = function (callback) {
-        return this.reduce(function (memo, cur) {
-            memo.push(callback(cur));
-            return memo;
-        }, []);
-    };
-    LinkedList.prototype.reduce = function (callback, memo) {
-        var cur, next = this.iterator();
-        while ((cur = next())) {
-            memo = callback(memo, cur);
-        }
-        return memo;
-    };
-    return LinkedList;
-}());
-exports.default = LinkedList;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __nested_webpack_require_43256__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var container_1 = __nested_webpack_require_43256__(2);
-var Registry = __nested_webpack_require_43256__(0);
-var OBSERVER_CONFIG = {
-    attributes: true,
-    characterData: true,
-    characterDataOldValue: true,
-    childList: true,
-    subtree: true,
-};
-var MAX_OPTIMIZE_ITERATIONS = 100;
-var ScrollBlot = /** @class */ (function (_super) {
-    __extends(ScrollBlot, _super);
-    function ScrollBlot(node) {
-        var _this = _super.call(this, node) || this;
-        _this.scroll = _this;
-        _this.observer = new MutationObserver(function (mutations) {
-            _this.update(mutations);
-        });
-        _this.observer.observe(_this.domNode, OBSERVER_CONFIG);
-        _this.attach();
-        return _this;
-    }
-    ScrollBlot.prototype.detach = function () {
-        _super.prototype.detach.call(this);
-        this.observer.disconnect();
-    };
-    ScrollBlot.prototype.deleteAt = function (index, length) {
-        this.update();
-        if (index === 0 && length === this.length()) {
-            this.children.forEach(function (child) {
-                child.remove();
-            });
-        }
-        else {
-            _super.prototype.deleteAt.call(this, index, length);
-        }
-    };
-    ScrollBlot.prototype.formatAt = function (index, length, name, value) {
-        this.update();
-        _super.prototype.formatAt.call(this, index, length, name, value);
-    };
-    ScrollBlot.prototype.insertAt = function (index, value, def) {
-        this.update();
-        _super.prototype.insertAt.call(this, index, value, def);
-    };
-    ScrollBlot.prototype.optimize = function (mutations, context) {
-        var _this = this;
-        if (mutations === void 0) { mutations = []; }
-        if (context === void 0) { context = {}; }
-        _super.prototype.optimize.call(this, context);
-        // We must modify mutations directly, cannot make copy and then modify
-        var records = [].slice.call(this.observer.takeRecords());
-        // Array.push currently seems to be implemented by a non-tail recursive function
-        // so we cannot just mutations.push.apply(mutations, this.observer.takeRecords());
-        while (records.length > 0)
-            mutations.push(records.pop());
-        // TODO use WeakMap
-        var mark = function (blot, markParent) {
-            if (markParent === void 0) { markParent = true; }
-            if (blot == null || blot === _this)
-                return;
-            if (blot.domNode.parentNode == null)
-                return;
-            // @ts-ignore
-            if (blot.domNode[Registry.DATA_KEY].mutations == null) {
-                // @ts-ignore
-                blot.domNode[Registry.DATA_KEY].mutations = [];
-            }
-            if (markParent)
-                mark(blot.parent);
-        };
-        var optimize = function (blot) {
-            // Post-order traversal
-            if (
-            // @ts-ignore
-            blot.domNode[Registry.DATA_KEY] == null ||
-                // @ts-ignore
-                blot.domNode[Registry.DATA_KEY].mutations == null) {
-                return;
-            }
-            if (blot instanceof container_1.default) {
-                blot.children.forEach(optimize);
-            }
-            blot.optimize(context);
-        };
-        var remaining = mutations;
-        for (var i = 0; remaining.length > 0; i += 1) {
-            if (i >= MAX_OPTIMIZE_ITERATIONS) {
-                throw new Error('[Parchment] Maximum optimize iterations reached');
-            }
-            remaining.forEach(function (mutation) {
-                var blot = Registry.find(mutation.target, true);
-                if (blot == null)
-                    return;
-                if (blot.domNode === mutation.target) {
-                    if (mutation.type === 'childList') {
-                        mark(Registry.find(mutation.previousSibling, false));
-                        [].forEach.call(mutation.addedNodes, function (node) {
-                            var child = Registry.find(node, false);
-                            mark(child, false);
-                            if (child instanceof container_1.default) {
-                                child.children.forEach(function (grandChild) {
-                                    mark(grandChild, false);
-                                });
-                            }
-                        });
-                    }
-                    else if (mutation.type === 'attributes') {
-                        mark(blot.prev);
-                    }
-                }
-                mark(blot);
-            });
-            this.children.forEach(optimize);
-            remaining = [].slice.call(this.observer.takeRecords());
-            records = remaining.slice();
-            while (records.length > 0)
-                mutations.push(records.pop());
-        }
-    };
-    ScrollBlot.prototype.update = function (mutations, context) {
-        var _this = this;
-        if (context === void 0) { context = {}; }
-        mutations = mutations || this.observer.takeRecords();
-        // TODO use WeakMap
-        mutations
-            .map(function (mutation) {
-            var blot = Registry.find(mutation.target, true);
-            if (blot == null)
-                return null;
-            // @ts-ignore
-            if (blot.domNode[Registry.DATA_KEY].mutations == null) {
-                // @ts-ignore
-                blot.domNode[Registry.DATA_KEY].mutations = [mutation];
-                return blot;
-            }
-            else {
-                // @ts-ignore
-                blot.domNode[Registry.DATA_KEY].mutations.push(mutation);
-                return null;
-            }
-        })
-            .forEach(function (blot) {
-            if (blot == null ||
-                blot === _this ||
-                //@ts-ignore
-                blot.domNode[Registry.DATA_KEY] == null)
-                return;
-            // @ts-ignore
-            blot.update(blot.domNode[Registry.DATA_KEY].mutations || [], context);
-        });
-        // @ts-ignore
-        if (this.domNode[Registry.DATA_KEY].mutations != null) {
-            // @ts-ignore
-            _super.prototype.update.call(this, this.domNode[Registry.DATA_KEY].mutations, context);
-        }
-        this.optimize(mutations, context);
-    };
-    ScrollBlot.blotName = 'scroll';
-    ScrollBlot.defaultChild = 'block';
-    ScrollBlot.scope = Registry.Scope.BLOCK_BLOT;
-    ScrollBlot.tagName = 'DIV';
-    return ScrollBlot;
-}(container_1.default));
-exports.default = ScrollBlot;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __nested_webpack_require_50369__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var format_1 = __nested_webpack_require_50369__(3);
-var Registry = __nested_webpack_require_50369__(0);
-// Shallow object comparison
-function isEqual(obj1, obj2) {
-    if (Object.keys(obj1).length !== Object.keys(obj2).length)
-        return false;
-    // @ts-ignore
-    for (var prop in obj1) {
-        // @ts-ignore
-        if (obj1[prop] !== obj2[prop])
-            return false;
-    }
-    return true;
-}
-var InlineBlot = /** @class */ (function (_super) {
-    __extends(InlineBlot, _super);
-    function InlineBlot() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    InlineBlot.formats = function (domNode) {
-        if (domNode.tagName === InlineBlot.tagName)
-            return undefined;
-        return _super.formats.call(this, domNode);
-    };
-    InlineBlot.prototype.format = function (name, value) {
-        var _this = this;
-        if (name === this.statics.blotName && !value) {
-            this.children.forEach(function (child) {
-                if (!(child instanceof format_1.default)) {
-                    child = child.wrap(InlineBlot.blotName, true);
-                }
-                _this.attributes.copy(child);
-            });
-            this.unwrap();
-        }
-        else {
-            _super.prototype.format.call(this, name, value);
-        }
-    };
-    InlineBlot.prototype.formatAt = function (index, length, name, value) {
-        if (this.formats()[name] != null || Registry.query(name, Registry.Scope.ATTRIBUTE)) {
-            var blot = this.isolate(index, length);
-            blot.format(name, value);
-        }
-        else {
-            _super.prototype.formatAt.call(this, index, length, name, value);
-        }
-    };
-    InlineBlot.prototype.optimize = function (context) {
-        _super.prototype.optimize.call(this, context);
-        var formats = this.formats();
-        if (Object.keys(formats).length === 0) {
-            return this.unwrap(); // unformatted span
-        }
-        var next = this.next;
-        if (next instanceof InlineBlot && next.prev === this && isEqual(formats, next.formats())) {
-            next.moveChildren(this);
-            next.remove();
-        }
-    };
-    InlineBlot.blotName = 'inline';
-    InlineBlot.scope = Registry.Scope.INLINE_BLOT;
-    InlineBlot.tagName = 'SPAN';
-    return InlineBlot;
-}(format_1.default));
-exports.default = InlineBlot;
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __nested_webpack_require_53360__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var format_1 = __nested_webpack_require_53360__(3);
-var Registry = __nested_webpack_require_53360__(0);
-var BlockBlot = /** @class */ (function (_super) {
-    __extends(BlockBlot, _super);
-    function BlockBlot() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    BlockBlot.formats = function (domNode) {
-        var tagName = Registry.query(BlockBlot.blotName).tagName;
-        if (domNode.tagName === tagName)
-            return undefined;
-        return _super.formats.call(this, domNode);
-    };
-    BlockBlot.prototype.format = function (name, value) {
-        if (Registry.query(name, Registry.Scope.BLOCK) == null) {
-            return;
-        }
-        else if (name === this.statics.blotName && !value) {
-            this.replaceWith(BlockBlot.blotName);
-        }
-        else {
-            _super.prototype.format.call(this, name, value);
-        }
-    };
-    BlockBlot.prototype.formatAt = function (index, length, name, value) {
-        if (Registry.query(name, Registry.Scope.BLOCK) != null) {
-            this.format(name, value);
-        }
-        else {
-            _super.prototype.formatAt.call(this, index, length, name, value);
-        }
-    };
-    BlockBlot.prototype.insertAt = function (index, value, def) {
-        if (def == null || Registry.query(value, Registry.Scope.INLINE) != null) {
-            // Insert text or inline
-            _super.prototype.insertAt.call(this, index, value, def);
-        }
-        else {
-            var after = this.split(index);
-            var blot = Registry.create(value, def);
-            after.parent.insertBefore(blot, after);
-        }
-    };
-    BlockBlot.prototype.update = function (mutations, context) {
-        if (navigator.userAgent.match(/Trident/)) {
-            this.build();
-        }
-        else {
-            _super.prototype.update.call(this, mutations, context);
-        }
-    };
-    BlockBlot.blotName = 'block';
-    BlockBlot.scope = Registry.Scope.BLOCK_BLOT;
-    BlockBlot.tagName = 'P';
-    return BlockBlot;
-}(format_1.default));
-exports.default = BlockBlot;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __nested_webpack_require_56067__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var leaf_1 = __nested_webpack_require_56067__(4);
-var EmbedBlot = /** @class */ (function (_super) {
-    __extends(EmbedBlot, _super);
-    function EmbedBlot() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    EmbedBlot.formats = function (domNode) {
-        return undefined;
-    };
-    EmbedBlot.prototype.format = function (name, value) {
-        // super.formatAt wraps, which is what we want in general,
-        // but this allows subclasses to overwrite for formats
-        // that just apply to particular embeds
-        _super.prototype.formatAt.call(this, 0, this.length(), name, value);
-    };
-    EmbedBlot.prototype.formatAt = function (index, length, name, value) {
-        if (index === 0 && length === this.length()) {
-            this.format(name, value);
-        }
-        else {
-            _super.prototype.formatAt.call(this, index, length, name, value);
-        }
-    };
-    EmbedBlot.prototype.formats = function () {
-        return this.statics.formats(this.domNode);
-    };
-    return EmbedBlot;
-}(leaf_1.default));
-exports.default = EmbedBlot;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __nested_webpack_require_57807__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var leaf_1 = __nested_webpack_require_57807__(4);
-var Registry = __nested_webpack_require_57807__(0);
-var TextBlot = /** @class */ (function (_super) {
-    __extends(TextBlot, _super);
-    function TextBlot(node) {
-        var _this = _super.call(this, node) || this;
-        _this.text = _this.statics.value(_this.domNode);
-        return _this;
-    }
-    TextBlot.create = function (value) {
-        return document.createTextNode(value);
-    };
-    TextBlot.value = function (domNode) {
-        var text = domNode.data;
-        // @ts-ignore
-        if (text['normalize'])
-            text = text['normalize']();
-        return text;
-    };
-    TextBlot.prototype.deleteAt = function (index, length) {
-        this.domNode.data = this.text = this.text.slice(0, index) + this.text.slice(index + length);
-    };
-    TextBlot.prototype.index = function (node, offset) {
-        if (this.domNode === node) {
-            return offset;
-        }
-        return -1;
-    };
-    TextBlot.prototype.insertAt = function (index, value, def) {
-        if (def == null) {
-            this.text = this.text.slice(0, index) + value + this.text.slice(index);
-            this.domNode.data = this.text;
-        }
-        else {
-            _super.prototype.insertAt.call(this, index, value, def);
-        }
-    };
-    TextBlot.prototype.length = function () {
-        return this.text.length;
-    };
-    TextBlot.prototype.optimize = function (context) {
-        _super.prototype.optimize.call(this, context);
-        this.text = this.statics.value(this.domNode);
-        if (this.text.length === 0) {
-            this.remove();
-        }
-        else if (this.next instanceof TextBlot && this.next.prev === this) {
-            this.insertAt(this.length(), this.next.value());
-            this.next.remove();
-        }
-    };
-    TextBlot.prototype.position = function (index, inclusive) {
-        if (inclusive === void 0) { inclusive = false; }
-        return [this.domNode, index];
-    };
-    TextBlot.prototype.split = function (index, force) {
-        if (force === void 0) { force = false; }
-        if (!force) {
-            if (index === 0)
-                return this;
-            if (index === this.length())
-                return this.next;
-        }
-        var after = Registry.create(this.domNode.splitText(index));
-        this.parent.insertBefore(after, this.next);
-        this.text = this.statics.value(this.domNode);
-        return after;
-    };
-    TextBlot.prototype.update = function (mutations, context) {
-        var _this = this;
-        if (mutations.some(function (mutation) {
-            return mutation.type === 'characterData' && mutation.target === _this.domNode;
-        })) {
-            this.text = this.statics.value(this.domNode);
-        }
-    };
-    TextBlot.prototype.value = function () {
-        return this.text;
-    };
-    TextBlot.blotName = 'text';
-    TextBlot.scope = Registry.Scope.INLINE_BLOT;
-    return TextBlot;
-}(leaf_1.default));
-exports.default = TextBlot;
-
-
-/***/ })
-/******/ ]);
-});
-//# sourceMappingURL=parchment.js.map
-
-/***/ }),
 
 /***/ 436:
 /***/ ((module) => {
 
-"use strict";
 module.exports = __WEBPACK_EXTERNAL_MODULE__436__;
 
 /***/ })
@@ -1804,7 +39,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__436__;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -1853,9 +88,8 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__436__;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
@@ -1867,11 +101,8 @@ __webpack_require__.d(__webpack_exports__, {
 // EXTERNAL MODULE: external {"commonjs":"quill","commonjs2":"quill","amd":"quill","root":"Quill"}
 var external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_ = __webpack_require__(436);
 var external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_);
-// EXTERNAL MODULE: ./node_modules/parchment/dist/parchment.js
-var parchment = __webpack_require__(347);
-var parchment_default = /*#__PURE__*/__webpack_require__.n(parchment);
 ;// CONCATENATED MODULE: ./src/emoji-list.js
-var emojiList = [{
+let emojiList = [{
   "name": "100",
   "unicode": "1f4af",
   "shortname": ":100:",
@@ -11447,132 +9678,1866 @@ var emojiList = [{
 /* harmony default export */ const emoji_list = (emojiList);
 ;// CONCATENATED MODULE: ./src/emoji-map.js
 
-var emojiMap = {};
-emoji_list.forEach(function (emojiListObject) {
+const emojiMap = {};
+emoji_list.forEach(emojiListObject => {
   emojiMap[emojiListObject.name] = emojiListObject;
 });
 /* harmony default export */ const emoji_map = (emojiMap);
 ;// CONCATENATED MODULE: ./src/format-emoji-blot.js
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-var EmojiBlot = /*#__PURE__*/function (_Parchment$Embed) {
-  _inherits(EmojiBlot, _Parchment$Embed);
-  var _super = _createSuper(EmojiBlot);
-  function EmojiBlot() {
-    _classCallCheck(this, EmojiBlot);
-    return _super.apply(this, arguments);
-  }
-  _createClass(EmojiBlot, null, [{
-    key: "create",
-    value: function create(value) {
-      var node = _get(_getPrototypeOf(EmojiBlot), "create", this).call(this);
-      if (_typeof(value) === 'object') {
-        EmojiBlot.buildSpan(value, node);
-      } else if (typeof value === "string") {
-        var valueObj = emoji_map[value];
-        if (valueObj) {
-          EmojiBlot.buildSpan(valueObj, node);
-        }
+const Embed = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]("blots/embed");
+class EmojiBlot extends Embed {
+  static create(value) {
+    let node = super.create();
+    if (typeof value === 'object') {
+      EmojiBlot.buildSpan(value, node);
+    } else if (typeof value === "string") {
+      const valueObj = emoji_map[value];
+      if (valueObj) {
+        EmojiBlot.buildSpan(valueObj, node);
       }
-      return node;
     }
-  }, {
-    key: "value",
-    value: function value(node) {
-      return node.dataset.name;
-    }
-  }, {
-    key: "buildSpan",
-    value: function buildSpan(value, node) {
-      node.setAttribute('data-name', value.name);
-      var emojiSpan = document.createElement('span');
-      emojiSpan.classList.add(this.emojiClass);
-      emojiSpan.classList.add(this.emojiPrefix + value.name);
-      // unicode can be '1f1f5-1f1ea',see emoji-list.js.
-      emojiSpan.innerText = String.fromCodePoint.apply(String, _toConsumableArray(EmojiBlot.parseUnicode(value.unicode)));
-      node.appendChild(emojiSpan);
-    }
-  }, {
-    key: "parseUnicode",
-    value: function parseUnicode(string) {
-      return string.split('-').map(function (str) {
-        return parseInt(str, 16);
-      });
-    }
-  }]);
-  return EmojiBlot;
-}((parchment_default()).Embed);
+    return node;
+  }
+  static value(node) {
+    return node.dataset.name;
+  }
+  static buildSpan(value, node) {
+    node.setAttribute('data-name', value.name);
+    let emojiSpan = document.createElement('span');
+    emojiSpan.classList.add(this.emojiClass);
+    emojiSpan.classList.add(this.emojiPrefix + value.name);
+    // unicode can be '1f1f5-1f1ea',see emoji-list.js.
+    emojiSpan.innerText = String.fromCodePoint(...EmojiBlot.parseUnicode(value.unicode));
+    node.appendChild(emojiSpan);
+  }
+  static parseUnicode(string) {
+    return string.split('-').map(str => parseInt(str, 16));
+  }
+}
 EmojiBlot.blotName = 'emoji';
 EmojiBlot.className = 'ql-emojiblot';
 EmojiBlot.tagName = 'span';
 EmojiBlot.emojiClass = 'ap';
 EmojiBlot.emojiPrefix = 'ap-';
 /* harmony default export */ const format_emoji_blot = (EmojiBlot);
-// EXTERNAL MODULE: ./node_modules/fuse.js/dist/fuse.js
-var dist_fuse = __webpack_require__(70);
-var fuse_default = /*#__PURE__*/__webpack_require__.n(dist_fuse);
+;// CONCATENATED MODULE: ./node_modules/fuse.js/dist/fuse.esm.js
+/**
+ * Fuse.js v6.6.2 - Lightweight fuzzy-search (http://fusejs.io)
+ *
+ * Copyright (c) 2022 Kiro Risk (http://kiro.me)
+ * All Rights Reserved. Apache Software License 2.0
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+function isArray(value) {
+  return !Array.isArray
+    ? getTag(value) === '[object Array]'
+    : Array.isArray(value)
+}
+
+// Adapted from: https://github.com/lodash/lodash/blob/master/.internal/baseToString.js
+const INFINITY = 1 / 0;
+function baseToString(value) {
+  // Exit early for strings to avoid a performance hit in some environments.
+  if (typeof value == 'string') {
+    return value
+  }
+  let result = value + '';
+  return result == '0' && 1 / value == -INFINITY ? '-0' : result
+}
+
+function fuse_esm_toString(value) {
+  return value == null ? '' : baseToString(value)
+}
+
+function isString(value) {
+  return typeof value === 'string'
+}
+
+function isNumber(value) {
+  return typeof value === 'number'
+}
+
+// Adapted from: https://github.com/lodash/lodash/blob/master/isBoolean.js
+function isBoolean(value) {
+  return (
+    value === true ||
+    value === false ||
+    (isObjectLike(value) && getTag(value) == '[object Boolean]')
+  )
+}
+
+function isObject(value) {
+  return typeof value === 'object'
+}
+
+// Checks if `value` is object-like.
+function isObjectLike(value) {
+  return isObject(value) && value !== null
+}
+
+function isDefined(value) {
+  return value !== undefined && value !== null
+}
+
+function isBlank(value) {
+  return !value.trim().length
+}
+
+// Gets the `toStringTag` of `value`.
+// Adapted from: https://github.com/lodash/lodash/blob/master/.internal/getTag.js
+function getTag(value) {
+  return value == null
+    ? value === undefined
+      ? '[object Undefined]'
+      : '[object Null]'
+    : Object.prototype.toString.call(value)
+}
+
+const EXTENDED_SEARCH_UNAVAILABLE = 'Extended search is not available';
+
+const INCORRECT_INDEX_TYPE = "Incorrect 'index' type";
+
+const LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY = (key) =>
+  `Invalid value for key ${key}`;
+
+const PATTERN_LENGTH_TOO_LARGE = (max) =>
+  `Pattern length exceeds max of ${max}.`;
+
+const MISSING_KEY_PROPERTY = (name) => `Missing ${name} property in key`;
+
+const INVALID_KEY_WEIGHT_VALUE = (key) =>
+  `Property 'weight' in key '${key}' must be a positive integer`;
+
+const hasOwn = Object.prototype.hasOwnProperty;
+
+class KeyStore {
+  constructor(keys) {
+    this._keys = [];
+    this._keyMap = {};
+
+    let totalWeight = 0;
+
+    keys.forEach((key) => {
+      let obj = createKey(key);
+
+      totalWeight += obj.weight;
+
+      this._keys.push(obj);
+      this._keyMap[obj.id] = obj;
+
+      totalWeight += obj.weight;
+    });
+
+    // Normalize weights so that their sum is equal to 1
+    this._keys.forEach((key) => {
+      key.weight /= totalWeight;
+    });
+  }
+  get(keyId) {
+    return this._keyMap[keyId]
+  }
+  keys() {
+    return this._keys
+  }
+  toJSON() {
+    return JSON.stringify(this._keys)
+  }
+}
+
+function createKey(key) {
+  let path = null;
+  let id = null;
+  let src = null;
+  let weight = 1;
+  let getFn = null;
+
+  if (isString(key) || isArray(key)) {
+    src = key;
+    path = createKeyPath(key);
+    id = createKeyId(key);
+  } else {
+    if (!hasOwn.call(key, 'name')) {
+      throw new Error(MISSING_KEY_PROPERTY('name'))
+    }
+
+    const name = key.name;
+    src = name;
+
+    if (hasOwn.call(key, 'weight')) {
+      weight = key.weight;
+
+      if (weight <= 0) {
+        throw new Error(INVALID_KEY_WEIGHT_VALUE(name))
+      }
+    }
+
+    path = createKeyPath(name);
+    id = createKeyId(name);
+    getFn = key.getFn;
+  }
+
+  return { path, id, weight, src, getFn }
+}
+
+function createKeyPath(key) {
+  return isArray(key) ? key : key.split('.')
+}
+
+function createKeyId(key) {
+  return isArray(key) ? key.join('.') : key
+}
+
+function get(obj, path) {
+  let list = [];
+  let arr = false;
+
+  const deepGet = (obj, path, index) => {
+    if (!isDefined(obj)) {
+      return
+    }
+    if (!path[index]) {
+      // If there's no path left, we've arrived at the object we care about.
+      list.push(obj);
+    } else {
+      let key = path[index];
+
+      const value = obj[key];
+
+      if (!isDefined(value)) {
+        return
+      }
+
+      // If we're at the last value in the path, and if it's a string/number/bool,
+      // add it to the list
+      if (
+        index === path.length - 1 &&
+        (isString(value) || isNumber(value) || isBoolean(value))
+      ) {
+        list.push(fuse_esm_toString(value));
+      } else if (isArray(value)) {
+        arr = true;
+        // Search each item in the array.
+        for (let i = 0, len = value.length; i < len; i += 1) {
+          deepGet(value[i], path, index + 1);
+        }
+      } else if (path.length) {
+        // An object. Recurse further.
+        deepGet(value, path, index + 1);
+      }
+    }
+  };
+
+  // Backwards compatibility (since path used to be a string)
+  deepGet(obj, isString(path) ? path.split('.') : path, 0);
+
+  return arr ? list : list[0]
+}
+
+const MatchOptions = {
+  // Whether the matches should be included in the result set. When `true`, each record in the result
+  // set will include the indices of the matched characters.
+  // These can consequently be used for highlighting purposes.
+  includeMatches: false,
+  // When `true`, the matching function will continue to the end of a search pattern even if
+  // a perfect match has already been located in the string.
+  findAllMatches: false,
+  // Minimum number of characters that must be matched before a result is considered a match
+  minMatchCharLength: 1
+};
+
+const BasicOptions = {
+  // When `true`, the algorithm continues searching to the end of the input even if a perfect
+  // match is found before the end of the same input.
+  isCaseSensitive: false,
+  // When true, the matching function will continue to the end of a search pattern even if
+  includeScore: false,
+  // List of properties that will be searched. This also supports nested properties.
+  keys: [],
+  // Whether to sort the result list, by score
+  shouldSort: true,
+  // Default sort function: sort by ascending score, ascending index
+  sortFn: (a, b) =>
+    a.score === b.score ? (a.idx < b.idx ? -1 : 1) : a.score < b.score ? -1 : 1
+};
+
+const FuzzyOptions = {
+  // Approximately where in the text is the pattern expected to be found?
+  location: 0,
+  // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
+  // (of both letters and location), a threshold of '1.0' would match anything.
+  threshold: 0.6,
+  // Determines how close the match must be to the fuzzy location (specified above).
+  // An exact letter match which is 'distance' characters away from the fuzzy location
+  // would score as a complete mismatch. A distance of '0' requires the match be at
+  // the exact location specified, a threshold of '1000' would require a perfect match
+  // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
+  distance: 100
+};
+
+const AdvancedOptions = {
+  // When `true`, it enables the use of unix-like search commands
+  useExtendedSearch: false,
+  // The get function to use when fetching an object's properties.
+  // The default will search nested paths *ie foo.bar.baz*
+  getFn: get,
+  // When `true`, search will ignore `location` and `distance`, so it won't matter
+  // where in the string the pattern appears.
+  // More info: https://fusejs.io/concepts/scoring-theory.html#fuzziness-score
+  ignoreLocation: false,
+  // When `true`, the calculation for the relevance score (used for sorting) will
+  // ignore the field-length norm.
+  // More info: https://fusejs.io/concepts/scoring-theory.html#field-length-norm
+  ignoreFieldNorm: false,
+  // The weight to determine how much field length norm effects scoring.
+  fieldNormWeight: 1
+};
+
+var Config = {
+  ...BasicOptions,
+  ...MatchOptions,
+  ...FuzzyOptions,
+  ...AdvancedOptions
+};
+
+const SPACE = /[^ ]+/g;
+
+// Field-length norm: the shorter the field, the higher the weight.
+// Set to 3 decimals to reduce index size.
+function norm(weight = 1, mantissa = 3) {
+  const cache = new Map();
+  const m = Math.pow(10, mantissa);
+
+  return {
+    get(value) {
+      const numTokens = value.match(SPACE).length;
+
+      if (cache.has(numTokens)) {
+        return cache.get(numTokens)
+      }
+
+      // Default function is 1/sqrt(x), weight makes that variable
+      const norm = 1 / Math.pow(numTokens, 0.5 * weight);
+
+      // In place of `toFixed(mantissa)`, for faster computation
+      const n = parseFloat(Math.round(norm * m) / m);
+
+      cache.set(numTokens, n);
+
+      return n
+    },
+    clear() {
+      cache.clear();
+    }
+  }
+}
+
+class FuseIndex {
+  constructor({
+    getFn = Config.getFn,
+    fieldNormWeight = Config.fieldNormWeight
+  } = {}) {
+    this.norm = norm(fieldNormWeight, 3);
+    this.getFn = getFn;
+    this.isCreated = false;
+
+    this.setIndexRecords();
+  }
+  setSources(docs = []) {
+    this.docs = docs;
+  }
+  setIndexRecords(records = []) {
+    this.records = records;
+  }
+  setKeys(keys = []) {
+    this.keys = keys;
+    this._keysMap = {};
+    keys.forEach((key, idx) => {
+      this._keysMap[key.id] = idx;
+    });
+  }
+  create() {
+    if (this.isCreated || !this.docs.length) {
+      return
+    }
+
+    this.isCreated = true;
+
+    // List is Array<String>
+    if (isString(this.docs[0])) {
+      this.docs.forEach((doc, docIndex) => {
+        this._addString(doc, docIndex);
+      });
+    } else {
+      // List is Array<Object>
+      this.docs.forEach((doc, docIndex) => {
+        this._addObject(doc, docIndex);
+      });
+    }
+
+    this.norm.clear();
+  }
+  // Adds a doc to the end of the index
+  add(doc) {
+    const idx = this.size();
+
+    if (isString(doc)) {
+      this._addString(doc, idx);
+    } else {
+      this._addObject(doc, idx);
+    }
+  }
+  // Removes the doc at the specified index of the index
+  removeAt(idx) {
+    this.records.splice(idx, 1);
+
+    // Change ref index of every subsquent doc
+    for (let i = idx, len = this.size(); i < len; i += 1) {
+      this.records[i].i -= 1;
+    }
+  }
+  getValueForItemAtKeyId(item, keyId) {
+    return item[this._keysMap[keyId]]
+  }
+  size() {
+    return this.records.length
+  }
+  _addString(doc, docIndex) {
+    if (!isDefined(doc) || isBlank(doc)) {
+      return
+    }
+
+    let record = {
+      v: doc,
+      i: docIndex,
+      n: this.norm.get(doc)
+    };
+
+    this.records.push(record);
+  }
+  _addObject(doc, docIndex) {
+    let record = { i: docIndex, $: {} };
+
+    // Iterate over every key (i.e, path), and fetch the value at that key
+    this.keys.forEach((key, keyIndex) => {
+      let value = key.getFn ? key.getFn(doc) : this.getFn(doc, key.path);
+
+      if (!isDefined(value)) {
+        return
+      }
+
+      if (isArray(value)) {
+        let subRecords = [];
+        const stack = [{ nestedArrIndex: -1, value }];
+
+        while (stack.length) {
+          const { nestedArrIndex, value } = stack.pop();
+
+          if (!isDefined(value)) {
+            continue
+          }
+
+          if (isString(value) && !isBlank(value)) {
+            let subRecord = {
+              v: value,
+              i: nestedArrIndex,
+              n: this.norm.get(value)
+            };
+
+            subRecords.push(subRecord);
+          } else if (isArray(value)) {
+            value.forEach((item, k) => {
+              stack.push({
+                nestedArrIndex: k,
+                value: item
+              });
+            });
+          } else ;
+        }
+        record.$[keyIndex] = subRecords;
+      } else if (isString(value) && !isBlank(value)) {
+        let subRecord = {
+          v: value,
+          n: this.norm.get(value)
+        };
+
+        record.$[keyIndex] = subRecord;
+      }
+    });
+
+    this.records.push(record);
+  }
+  toJSON() {
+    return {
+      keys: this.keys,
+      records: this.records
+    }
+  }
+}
+
+function createIndex(
+  keys,
+  docs,
+  { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}
+) {
+  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
+  myIndex.setKeys(keys.map(createKey));
+  myIndex.setSources(docs);
+  myIndex.create();
+  return myIndex
+}
+
+function parseIndex(
+  data,
+  { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}
+) {
+  const { keys, records } = data;
+  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
+  myIndex.setKeys(keys);
+  myIndex.setIndexRecords(records);
+  return myIndex
+}
+
+function computeScore$1(
+  pattern,
+  {
+    errors = 0,
+    currentLocation = 0,
+    expectedLocation = 0,
+    distance = Config.distance,
+    ignoreLocation = Config.ignoreLocation
+  } = {}
+) {
+  const accuracy = errors / pattern.length;
+
+  if (ignoreLocation) {
+    return accuracy
+  }
+
+  const proximity = Math.abs(expectedLocation - currentLocation);
+
+  if (!distance) {
+    // Dodge divide by zero error.
+    return proximity ? 1.0 : accuracy
+  }
+
+  return accuracy + proximity / distance
+}
+
+function convertMaskToIndices(
+  matchmask = [],
+  minMatchCharLength = Config.minMatchCharLength
+) {
+  let indices = [];
+  let start = -1;
+  let end = -1;
+  let i = 0;
+
+  for (let len = matchmask.length; i < len; i += 1) {
+    let match = matchmask[i];
+    if (match && start === -1) {
+      start = i;
+    } else if (!match && start !== -1) {
+      end = i - 1;
+      if (end - start + 1 >= minMatchCharLength) {
+        indices.push([start, end]);
+      }
+      start = -1;
+    }
+  }
+
+  // (i-1 - start) + 1 => i - start
+  if (matchmask[i - 1] && i - start >= minMatchCharLength) {
+    indices.push([start, i - 1]);
+  }
+
+  return indices
+}
+
+// Machine word size
+const MAX_BITS = 32;
+
+function search(
+  text,
+  pattern,
+  patternAlphabet,
+  {
+    location = Config.location,
+    distance = Config.distance,
+    threshold = Config.threshold,
+    findAllMatches = Config.findAllMatches,
+    minMatchCharLength = Config.minMatchCharLength,
+    includeMatches = Config.includeMatches,
+    ignoreLocation = Config.ignoreLocation
+  } = {}
+) {
+  if (pattern.length > MAX_BITS) {
+    throw new Error(PATTERN_LENGTH_TOO_LARGE(MAX_BITS))
+  }
+
+  const patternLen = pattern.length;
+  // Set starting location at beginning text and initialize the alphabet.
+  const textLen = text.length;
+  // Handle the case when location > text.length
+  const expectedLocation = Math.max(0, Math.min(location, textLen));
+  // Highest score beyond which we give up.
+  let currentThreshold = threshold;
+  // Is there a nearby exact match? (speedup)
+  let bestLocation = expectedLocation;
+
+  // Performance: only computer matches when the minMatchCharLength > 1
+  // OR if `includeMatches` is true.
+  const computeMatches = minMatchCharLength > 1 || includeMatches;
+  // A mask of the matches, used for building the indices
+  const matchMask = computeMatches ? Array(textLen) : [];
+
+  let index;
+
+  // Get all exact matches, here for speed up
+  while ((index = text.indexOf(pattern, bestLocation)) > -1) {
+    let score = computeScore$1(pattern, {
+      currentLocation: index,
+      expectedLocation,
+      distance,
+      ignoreLocation
+    });
+
+    currentThreshold = Math.min(score, currentThreshold);
+    bestLocation = index + patternLen;
+
+    if (computeMatches) {
+      let i = 0;
+      while (i < patternLen) {
+        matchMask[index + i] = 1;
+        i += 1;
+      }
+    }
+  }
+
+  // Reset the best location
+  bestLocation = -1;
+
+  let lastBitArr = [];
+  let finalScore = 1;
+  let binMax = patternLen + textLen;
+
+  const mask = 1 << (patternLen - 1);
+
+  for (let i = 0; i < patternLen; i += 1) {
+    // Scan for the best match; each iteration allows for one more error.
+    // Run a binary search to determine how far from the match location we can stray
+    // at this error level.
+    let binMin = 0;
+    let binMid = binMax;
+
+    while (binMin < binMid) {
+      const score = computeScore$1(pattern, {
+        errors: i,
+        currentLocation: expectedLocation + binMid,
+        expectedLocation,
+        distance,
+        ignoreLocation
+      });
+
+      if (score <= currentThreshold) {
+        binMin = binMid;
+      } else {
+        binMax = binMid;
+      }
+
+      binMid = Math.floor((binMax - binMin) / 2 + binMin);
+    }
+
+    // Use the result from this iteration as the maximum for the next.
+    binMax = binMid;
+
+    let start = Math.max(1, expectedLocation - binMid + 1);
+    let finish = findAllMatches
+      ? textLen
+      : Math.min(expectedLocation + binMid, textLen) + patternLen;
+
+    // Initialize the bit array
+    let bitArr = Array(finish + 2);
+
+    bitArr[finish + 1] = (1 << i) - 1;
+
+    for (let j = finish; j >= start; j -= 1) {
+      let currentLocation = j - 1;
+      let charMatch = patternAlphabet[text.charAt(currentLocation)];
+
+      if (computeMatches) {
+        // Speed up: quick bool to int conversion (i.e, `charMatch ? 1 : 0`)
+        matchMask[currentLocation] = +!!charMatch;
+      }
+
+      // First pass: exact match
+      bitArr[j] = ((bitArr[j + 1] << 1) | 1) & charMatch;
+
+      // Subsequent passes: fuzzy match
+      if (i) {
+        bitArr[j] |=
+          ((lastBitArr[j + 1] | lastBitArr[j]) << 1) | 1 | lastBitArr[j + 1];
+      }
+
+      if (bitArr[j] & mask) {
+        finalScore = computeScore$1(pattern, {
+          errors: i,
+          currentLocation,
+          expectedLocation,
+          distance,
+          ignoreLocation
+        });
+
+        // This match will almost certainly be better than any existing match.
+        // But check anyway.
+        if (finalScore <= currentThreshold) {
+          // Indeed it is
+          currentThreshold = finalScore;
+          bestLocation = currentLocation;
+
+          // Already passed `loc`, downhill from here on in.
+          if (bestLocation <= expectedLocation) {
+            break
+          }
+
+          // When passing `bestLocation`, don't exceed our current distance from `expectedLocation`.
+          start = Math.max(1, 2 * expectedLocation - bestLocation);
+        }
+      }
+    }
+
+    // No hope for a (better) match at greater error levels.
+    const score = computeScore$1(pattern, {
+      errors: i + 1,
+      currentLocation: expectedLocation,
+      expectedLocation,
+      distance,
+      ignoreLocation
+    });
+
+    if (score > currentThreshold) {
+      break
+    }
+
+    lastBitArr = bitArr;
+  }
+
+  const result = {
+    isMatch: bestLocation >= 0,
+    // Count exact matches (those with a score of 0) to be "almost" exact
+    score: Math.max(0.001, finalScore)
+  };
+
+  if (computeMatches) {
+    const indices = convertMaskToIndices(matchMask, minMatchCharLength);
+    if (!indices.length) {
+      result.isMatch = false;
+    } else if (includeMatches) {
+      result.indices = indices;
+    }
+  }
+
+  return result
+}
+
+function createPatternAlphabet(pattern) {
+  let mask = {};
+
+  for (let i = 0, len = pattern.length; i < len; i += 1) {
+    const char = pattern.charAt(i);
+    mask[char] = (mask[char] || 0) | (1 << (len - i - 1));
+  }
+
+  return mask
+}
+
+class BitapSearch {
+  constructor(
+    pattern,
+    {
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance,
+      includeMatches = Config.includeMatches,
+      findAllMatches = Config.findAllMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      isCaseSensitive = Config.isCaseSensitive,
+      ignoreLocation = Config.ignoreLocation
+    } = {}
+  ) {
+    this.options = {
+      location,
+      threshold,
+      distance,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive,
+      ignoreLocation
+    };
+
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+
+    this.chunks = [];
+
+    if (!this.pattern.length) {
+      return
+    }
+
+    const addChunk = (pattern, startIndex) => {
+      this.chunks.push({
+        pattern,
+        alphabet: createPatternAlphabet(pattern),
+        startIndex
+      });
+    };
+
+    const len = this.pattern.length;
+
+    if (len > MAX_BITS) {
+      let i = 0;
+      const remainder = len % MAX_BITS;
+      const end = len - remainder;
+
+      while (i < end) {
+        addChunk(this.pattern.substr(i, MAX_BITS), i);
+        i += MAX_BITS;
+      }
+
+      if (remainder) {
+        const startIndex = len - MAX_BITS;
+        addChunk(this.pattern.substr(startIndex), startIndex);
+      }
+    } else {
+      addChunk(this.pattern, 0);
+    }
+  }
+
+  searchIn(text) {
+    const { isCaseSensitive, includeMatches } = this.options;
+
+    if (!isCaseSensitive) {
+      text = text.toLowerCase();
+    }
+
+    // Exact match
+    if (this.pattern === text) {
+      let result = {
+        isMatch: true,
+        score: 0
+      };
+
+      if (includeMatches) {
+        result.indices = [[0, text.length - 1]];
+      }
+
+      return result
+    }
+
+    // Otherwise, use Bitap algorithm
+    const {
+      location,
+      distance,
+      threshold,
+      findAllMatches,
+      minMatchCharLength,
+      ignoreLocation
+    } = this.options;
+
+    let allIndices = [];
+    let totalScore = 0;
+    let hasMatches = false;
+
+    this.chunks.forEach(({ pattern, alphabet, startIndex }) => {
+      const { isMatch, score, indices } = search(text, pattern, alphabet, {
+        location: location + startIndex,
+        distance,
+        threshold,
+        findAllMatches,
+        minMatchCharLength,
+        includeMatches,
+        ignoreLocation
+      });
+
+      if (isMatch) {
+        hasMatches = true;
+      }
+
+      totalScore += score;
+
+      if (isMatch && indices) {
+        allIndices = [...allIndices, ...indices];
+      }
+    });
+
+    let result = {
+      isMatch: hasMatches,
+      score: hasMatches ? totalScore / this.chunks.length : 1
+    };
+
+    if (hasMatches && includeMatches) {
+      result.indices = allIndices;
+    }
+
+    return result
+  }
+}
+
+class BaseMatch {
+  constructor(pattern) {
+    this.pattern = pattern;
+  }
+  static isMultiMatch(pattern) {
+    return getMatch(pattern, this.multiRegex)
+  }
+  static isSingleMatch(pattern) {
+    return getMatch(pattern, this.singleRegex)
+  }
+  search(/*text*/) {}
+}
+
+function getMatch(pattern, exp) {
+  const matches = pattern.match(exp);
+  return matches ? matches[1] : null
+}
+
+// Token: 'file
+
+class ExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'exact'
+  }
+  static get multiRegex() {
+    return /^="(.*)"$/
+  }
+  static get singleRegex() {
+    return /^=(.*)$/
+  }
+  search(text) {
+    const isMatch = text === this.pattern;
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, this.pattern.length - 1]
+    }
+  }
+}
+
+// Token: !fire
+
+class InverseExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-exact'
+  }
+  static get multiRegex() {
+    return /^!"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^!(.*)$/
+  }
+  search(text) {
+    const index = text.indexOf(this.pattern);
+    const isMatch = index === -1;
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text.length - 1]
+    }
+  }
+}
+
+// Token: ^file
+
+class PrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'prefix-exact'
+  }
+  static get multiRegex() {
+    return /^\^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^\^(.*)$/
+  }
+  search(text) {
+    const isMatch = text.startsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, this.pattern.length - 1]
+    }
+  }
+}
+
+// Token: !^fire
+
+class InversePrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-prefix-exact'
+  }
+  static get multiRegex() {
+    return /^!\^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^!\^(.*)$/
+  }
+  search(text) {
+    const isMatch = !text.startsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text.length - 1]
+    }
+  }
+}
+
+// Token: .file$
+
+class SuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'suffix-exact'
+  }
+  static get multiRegex() {
+    return /^"(.*)"\$$/
+  }
+  static get singleRegex() {
+    return /^(.*)\$$/
+  }
+  search(text) {
+    const isMatch = text.endsWith(this.pattern);
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [text.length - this.pattern.length, text.length - 1]
+    }
+  }
+}
+
+// Token: !.file$
+
+class InverseSuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'inverse-suffix-exact'
+  }
+  static get multiRegex() {
+    return /^!"(.*)"\$$/
+  }
+  static get singleRegex() {
+    return /^!(.*)\$$/
+  }
+  search(text) {
+    const isMatch = !text.endsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text.length - 1]
+    }
+  }
+}
+
+class FuzzyMatch extends BaseMatch {
+  constructor(
+    pattern,
+    {
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance,
+      includeMatches = Config.includeMatches,
+      findAllMatches = Config.findAllMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      isCaseSensitive = Config.isCaseSensitive,
+      ignoreLocation = Config.ignoreLocation
+    } = {}
+  ) {
+    super(pattern);
+    this._bitapSearch = new BitapSearch(pattern, {
+      location,
+      threshold,
+      distance,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive,
+      ignoreLocation
+    });
+  }
+  static get type() {
+    return 'fuzzy'
+  }
+  static get multiRegex() {
+    return /^"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^(.*)$/
+  }
+  search(text) {
+    return this._bitapSearch.searchIn(text)
+  }
+}
+
+// Token: 'file
+
+class IncludeMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return 'include'
+  }
+  static get multiRegex() {
+    return /^'"(.*)"$/
+  }
+  static get singleRegex() {
+    return /^'(.*)$/
+  }
+  search(text) {
+    let location = 0;
+    let index;
+
+    const indices = [];
+    const patternLen = this.pattern.length;
+
+    // Get all exact matches
+    while ((index = text.indexOf(this.pattern, location)) > -1) {
+      location = index + patternLen;
+      indices.push([index, location - 1]);
+    }
+
+    const isMatch = !!indices.length;
+
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices
+    }
+  }
+}
+
+// ❗Order is important. DO NOT CHANGE.
+const searchers = [
+  ExactMatch,
+  IncludeMatch,
+  PrefixExactMatch,
+  InversePrefixExactMatch,
+  InverseSuffixExactMatch,
+  SuffixExactMatch,
+  InverseExactMatch,
+  FuzzyMatch
+];
+
+const searchersLen = searchers.length;
+
+// Regex to split by spaces, but keep anything in quotes together
+const SPACE_RE = / +(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)/;
+const OR_TOKEN = '|';
+
+// Return a 2D array representation of the query, for simpler parsing.
+// Example:
+// "^core go$ | rb$ | py$ xy$" => [["^core", "go$"], ["rb$"], ["py$", "xy$"]]
+function parseQuery(pattern, options = {}) {
+  return pattern.split(OR_TOKEN).map((item) => {
+    let query = item
+      .trim()
+      .split(SPACE_RE)
+      .filter((item) => item && !!item.trim());
+
+    let results = [];
+    for (let i = 0, len = query.length; i < len; i += 1) {
+      const queryItem = query[i];
+
+      // 1. Handle multiple query match (i.e, once that are quoted, like `"hello world"`)
+      let found = false;
+      let idx = -1;
+      while (!found && ++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isMultiMatch(queryItem);
+        if (token) {
+          results.push(new searcher(token, options));
+          found = true;
+        }
+      }
+
+      if (found) {
+        continue
+      }
+
+      // 2. Handle single query matches (i.e, once that are *not* quoted)
+      idx = -1;
+      while (++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isSingleMatch(queryItem);
+        if (token) {
+          results.push(new searcher(token, options));
+          break
+        }
+      }
+    }
+
+    return results
+  })
+}
+
+// These extended matchers can return an array of matches, as opposed
+// to a singl match
+const MultiMatchSet = new Set([FuzzyMatch.type, IncludeMatch.type]);
+
+/**
+ * Command-like searching
+ * ======================
+ *
+ * Given multiple search terms delimited by spaces.e.g. `^jscript .python$ ruby !java`,
+ * search in a given text.
+ *
+ * Search syntax:
+ *
+ * | Token       | Match type                 | Description                            |
+ * | ----------- | -------------------------- | -------------------------------------- |
+ * | `jscript`   | fuzzy-match                | Items that fuzzy match `jscript`       |
+ * | `=scheme`   | exact-match                | Items that are `scheme`                |
+ * | `'python`   | include-match              | Items that include `python`            |
+ * | `!ruby`     | inverse-exact-match        | Items that do not include `ruby`       |
+ * | `^java`     | prefix-exact-match         | Items that start with `java`           |
+ * | `!^earlang` | inverse-prefix-exact-match | Items that do not start with `earlang` |
+ * | `.js$`      | suffix-exact-match         | Items that end with `.js`              |
+ * | `!.go$`     | inverse-suffix-exact-match | Items that do not end with `.go`       |
+ *
+ * A single pipe character acts as an OR operator. For example, the following
+ * query matches entries that start with `core` and end with either`go`, `rb`,
+ * or`py`.
+ *
+ * ```
+ * ^core go$ | rb$ | py$
+ * ```
+ */
+class ExtendedSearch {
+  constructor(
+    pattern,
+    {
+      isCaseSensitive = Config.isCaseSensitive,
+      includeMatches = Config.includeMatches,
+      minMatchCharLength = Config.minMatchCharLength,
+      ignoreLocation = Config.ignoreLocation,
+      findAllMatches = Config.findAllMatches,
+      location = Config.location,
+      threshold = Config.threshold,
+      distance = Config.distance
+    } = {}
+  ) {
+    this.query = null;
+    this.options = {
+      isCaseSensitive,
+      includeMatches,
+      minMatchCharLength,
+      findAllMatches,
+      ignoreLocation,
+      location,
+      threshold,
+      distance
+    };
+
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+    this.query = parseQuery(this.pattern, this.options);
+  }
+
+  static condition(_, options) {
+    return options.useExtendedSearch
+  }
+
+  searchIn(text) {
+    const query = this.query;
+
+    if (!query) {
+      return {
+        isMatch: false,
+        score: 1
+      }
+    }
+
+    const { includeMatches, isCaseSensitive } = this.options;
+
+    text = isCaseSensitive ? text : text.toLowerCase();
+
+    let numMatches = 0;
+    let allIndices = [];
+    let totalScore = 0;
+
+    // ORs
+    for (let i = 0, qLen = query.length; i < qLen; i += 1) {
+      const searchers = query[i];
+
+      // Reset indices
+      allIndices.length = 0;
+      numMatches = 0;
+
+      // ANDs
+      for (let j = 0, pLen = searchers.length; j < pLen; j += 1) {
+        const searcher = searchers[j];
+        const { isMatch, indices, score } = searcher.search(text);
+
+        if (isMatch) {
+          numMatches += 1;
+          totalScore += score;
+          if (includeMatches) {
+            const type = searcher.constructor.type;
+            if (MultiMatchSet.has(type)) {
+              allIndices = [...allIndices, ...indices];
+            } else {
+              allIndices.push(indices);
+            }
+          }
+        } else {
+          totalScore = 0;
+          numMatches = 0;
+          allIndices.length = 0;
+          break
+        }
+      }
+
+      // OR condition, so if TRUE, return
+      if (numMatches) {
+        let result = {
+          isMatch: true,
+          score: totalScore / numMatches
+        };
+
+        if (includeMatches) {
+          result.indices = allIndices;
+        }
+
+        return result
+      }
+    }
+
+    // Nothing was matched
+    return {
+      isMatch: false,
+      score: 1
+    }
+  }
+}
+
+const registeredSearchers = [];
+
+function register(...args) {
+  registeredSearchers.push(...args);
+}
+
+function createSearcher(pattern, options) {
+  for (let i = 0, len = registeredSearchers.length; i < len; i += 1) {
+    let searcherClass = registeredSearchers[i];
+    if (searcherClass.condition(pattern, options)) {
+      return new searcherClass(pattern, options)
+    }
+  }
+
+  return new BitapSearch(pattern, options)
+}
+
+const LogicalOperator = {
+  AND: '$and',
+  OR: '$or'
+};
+
+const KeyType = {
+  PATH: '$path',
+  PATTERN: '$val'
+};
+
+const isExpression = (query) =>
+  !!(query[LogicalOperator.AND] || query[LogicalOperator.OR]);
+
+const isPath = (query) => !!query[KeyType.PATH];
+
+const isLeaf = (query) =>
+  !isArray(query) && isObject(query) && !isExpression(query);
+
+const convertToExplicit = (query) => ({
+  [LogicalOperator.AND]: Object.keys(query).map((key) => ({
+    [key]: query[key]
+  }))
+});
+
+// When `auto` is `true`, the parse function will infer and initialize and add
+// the appropriate `Searcher` instance
+function parse(query, options, { auto = true } = {}) {
+  const next = (query) => {
+    let keys = Object.keys(query);
+
+    const isQueryPath = isPath(query);
+
+    if (!isQueryPath && keys.length > 1 && !isExpression(query)) {
+      return next(convertToExplicit(query))
+    }
+
+    if (isLeaf(query)) {
+      const key = isQueryPath ? query[KeyType.PATH] : keys[0];
+
+      const pattern = isQueryPath ? query[KeyType.PATTERN] : query[key];
+
+      if (!isString(pattern)) {
+        throw new Error(LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY(key))
+      }
+
+      const obj = {
+        keyId: createKeyId(key),
+        pattern
+      };
+
+      if (auto) {
+        obj.searcher = createSearcher(pattern, options);
+      }
+
+      return obj
+    }
+
+    let node = {
+      children: [],
+      operator: keys[0]
+    };
+
+    keys.forEach((key) => {
+      const value = query[key];
+
+      if (isArray(value)) {
+        value.forEach((item) => {
+          node.children.push(next(item));
+        });
+      }
+    });
+
+    return node
+  };
+
+  if (!isExpression(query)) {
+    query = convertToExplicit(query);
+  }
+
+  return next(query)
+}
+
+// Practical scoring function
+function computeScore(
+  results,
+  { ignoreFieldNorm = Config.ignoreFieldNorm }
+) {
+  results.forEach((result) => {
+    let totalScore = 1;
+
+    result.matches.forEach(({ key, norm, score }) => {
+      const weight = key ? key.weight : null;
+
+      totalScore *= Math.pow(
+        score === 0 && weight ? Number.EPSILON : score,
+        (weight || 1) * (ignoreFieldNorm ? 1 : norm)
+      );
+    });
+
+    result.score = totalScore;
+  });
+}
+
+function transformMatches(result, data) {
+  const matches = result.matches;
+  data.matches = [];
+
+  if (!isDefined(matches)) {
+    return
+  }
+
+  matches.forEach((match) => {
+    if (!isDefined(match.indices) || !match.indices.length) {
+      return
+    }
+
+    const { indices, value } = match;
+
+    let obj = {
+      indices,
+      value
+    };
+
+    if (match.key) {
+      obj.key = match.key.src;
+    }
+
+    if (match.idx > -1) {
+      obj.refIndex = match.idx;
+    }
+
+    data.matches.push(obj);
+  });
+}
+
+function transformScore(result, data) {
+  data.score = result.score;
+}
+
+function format(
+  results,
+  docs,
+  {
+    includeMatches = Config.includeMatches,
+    includeScore = Config.includeScore
+  } = {}
+) {
+  const transformers = [];
+
+  if (includeMatches) transformers.push(transformMatches);
+  if (includeScore) transformers.push(transformScore);
+
+  return results.map((result) => {
+    const { idx } = result;
+
+    const data = {
+      item: docs[idx],
+      refIndex: idx
+    };
+
+    if (transformers.length) {
+      transformers.forEach((transformer) => {
+        transformer(result, data);
+      });
+    }
+
+    return data
+  })
+}
+
+class Fuse {
+  constructor(docs, options = {}, index) {
+    this.options = { ...Config, ...options };
+
+    if (
+      this.options.useExtendedSearch &&
+      !true
+    ) {}
+
+    this._keyStore = new KeyStore(this.options.keys);
+
+    this.setCollection(docs, index);
+  }
+
+  setCollection(docs, index) {
+    this._docs = docs;
+
+    if (index && !(index instanceof FuseIndex)) {
+      throw new Error(INCORRECT_INDEX_TYPE)
+    }
+
+    this._myIndex =
+      index ||
+      createIndex(this.options.keys, this._docs, {
+        getFn: this.options.getFn,
+        fieldNormWeight: this.options.fieldNormWeight
+      });
+  }
+
+  add(doc) {
+    if (!isDefined(doc)) {
+      return
+    }
+
+    this._docs.push(doc);
+    this._myIndex.add(doc);
+  }
+
+  remove(predicate = (/* doc, idx */) => false) {
+    const results = [];
+
+    for (let i = 0, len = this._docs.length; i < len; i += 1) {
+      const doc = this._docs[i];
+      if (predicate(doc, i)) {
+        this.removeAt(i);
+        i -= 1;
+        len -= 1;
+
+        results.push(doc);
+      }
+    }
+
+    return results
+  }
+
+  removeAt(idx) {
+    this._docs.splice(idx, 1);
+    this._myIndex.removeAt(idx);
+  }
+
+  getIndex() {
+    return this._myIndex
+  }
+
+  search(query, { limit = -1 } = {}) {
+    const {
+      includeMatches,
+      includeScore,
+      shouldSort,
+      sortFn,
+      ignoreFieldNorm
+    } = this.options;
+
+    let results = isString(query)
+      ? isString(this._docs[0])
+        ? this._searchStringList(query)
+        : this._searchObjectList(query)
+      : this._searchLogical(query);
+
+    computeScore(results, { ignoreFieldNorm });
+
+    if (shouldSort) {
+      results.sort(sortFn);
+    }
+
+    if (isNumber(limit) && limit > -1) {
+      results = results.slice(0, limit);
+    }
+
+    return format(results, this._docs, {
+      includeMatches,
+      includeScore
+    })
+  }
+
+  _searchStringList(query) {
+    const searcher = createSearcher(query, this.options);
+    const { records } = this._myIndex;
+    const results = [];
+
+    // Iterate over every string in the index
+    records.forEach(({ v: text, i: idx, n: norm }) => {
+      if (!isDefined(text)) {
+        return
+      }
+
+      const { isMatch, score, indices } = searcher.searchIn(text);
+
+      if (isMatch) {
+        results.push({
+          item: text,
+          idx,
+          matches: [{ score, value: text, norm, indices }]
+        });
+      }
+    });
+
+    return results
+  }
+
+  _searchLogical(query) {
+
+    const expression = parse(query, this.options);
+
+    const evaluate = (node, item, idx) => {
+      if (!node.children) {
+        const { keyId, searcher } = node;
+
+        const matches = this._findMatches({
+          key: this._keyStore.get(keyId),
+          value: this._myIndex.getValueForItemAtKeyId(item, keyId),
+          searcher
+        });
+
+        if (matches && matches.length) {
+          return [
+            {
+              idx,
+              item,
+              matches
+            }
+          ]
+        }
+
+        return []
+      }
+
+      const res = [];
+      for (let i = 0, len = node.children.length; i < len; i += 1) {
+        const child = node.children[i];
+        const result = evaluate(child, item, idx);
+        if (result.length) {
+          res.push(...result);
+        } else if (node.operator === LogicalOperator.AND) {
+          return []
+        }
+      }
+      return res
+    };
+
+    const records = this._myIndex.records;
+    const resultMap = {};
+    const results = [];
+
+    records.forEach(({ $: item, i: idx }) => {
+      if (isDefined(item)) {
+        let expResults = evaluate(expression, item, idx);
+
+        if (expResults.length) {
+          // Dedupe when adding
+          if (!resultMap[idx]) {
+            resultMap[idx] = { idx, item, matches: [] };
+            results.push(resultMap[idx]);
+          }
+          expResults.forEach(({ matches }) => {
+            resultMap[idx].matches.push(...matches);
+          });
+        }
+      }
+    });
+
+    return results
+  }
+
+  _searchObjectList(query) {
+    const searcher = createSearcher(query, this.options);
+    const { keys, records } = this._myIndex;
+    const results = [];
+
+    // List is Array<Object>
+    records.forEach(({ $: item, i: idx }) => {
+      if (!isDefined(item)) {
+        return
+      }
+
+      let matches = [];
+
+      // Iterate over every key (i.e, path), and fetch the value at that key
+      keys.forEach((key, keyIndex) => {
+        matches.push(
+          ...this._findMatches({
+            key,
+            value: item[keyIndex],
+            searcher
+          })
+        );
+      });
+
+      if (matches.length) {
+        results.push({
+          idx,
+          item,
+          matches
+        });
+      }
+    });
+
+    return results
+  }
+  _findMatches({ key, value, searcher }) {
+    if (!isDefined(value)) {
+      return []
+    }
+
+    let matches = [];
+
+    if (isArray(value)) {
+      value.forEach(({ v: text, i: idx, n: norm }) => {
+        if (!isDefined(text)) {
+          return
+        }
+
+        const { isMatch, score, indices } = searcher.searchIn(text);
+
+        if (isMatch) {
+          matches.push({
+            score,
+            key,
+            value: text,
+            idx,
+            norm,
+            indices
+          });
+        }
+      });
+    } else {
+      const { v: text, n: norm } = value;
+
+      const { isMatch, score, indices } = searcher.searchIn(text);
+
+      if (isMatch) {
+        matches.push({ score, key, value: text, norm, indices });
+      }
+    }
+
+    return matches
+  }
+}
+
+Fuse.version = '6.6.2';
+Fuse.createIndex = createIndex;
+Fuse.parseIndex = parseIndex;
+Fuse.config = Config;
+
+{
+  Fuse.parseQuery = parse;
+}
+
+{
+  register(ExtendedSearch);
+}
+
+
+
+;// CONCATENATED MODULE: ./src/keys.js
+const Keys = {
+  TAB: 'Tab',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  UP: 'ArrowUp',
+  DOWN: 'ArrowDown',
+  LEFT: 'ArrowLeft',
+  RIGHT: 'ArrowRight'
+};
+/* harmony default export */ const keys = (Keys);
 ;// CONCATENATED MODULE: ./src/module-emoji.js
-function module_emoji_typeof(o) { "@babel/helpers - typeof"; return module_emoji_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, module_emoji_typeof(o); }
-function module_emoji_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function module_emoji_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, module_emoji_toPropertyKey(descriptor.key), descriptor); } }
-function module_emoji_createClass(Constructor, protoProps, staticProps) { if (protoProps) module_emoji_defineProperties(Constructor.prototype, protoProps); if (staticProps) module_emoji_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function module_emoji_toPropertyKey(arg) { var key = module_emoji_toPrimitive(arg, "string"); return module_emoji_typeof(key) === "symbol" ? key : String(key); }
-function module_emoji_toPrimitive(input, hint) { if (module_emoji_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (module_emoji_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function module_emoji_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) module_emoji_setPrototypeOf(subClass, superClass); }
-function module_emoji_setPrototypeOf(o, p) { module_emoji_setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return module_emoji_setPrototypeOf(o, p); }
-function module_emoji_createSuper(Derived) { var hasNativeReflectConstruct = module_emoji_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = module_emoji_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = module_emoji_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return module_emoji_possibleConstructorReturn(this, result); }; }
-function module_emoji_possibleConstructorReturn(self, call) { if (call && (module_emoji_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return module_emoji_assertThisInitialized(self); }
-function module_emoji_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function module_emoji_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function module_emoji_getPrototypeOf(o) { module_emoji_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return module_emoji_getPrototypeOf(o); }
 
 
 
-var Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
-var ShortNameEmoji = /*#__PURE__*/function (_Module) {
-  module_emoji_inherits(ShortNameEmoji, _Module);
-  var _super = module_emoji_createSuper(ShortNameEmoji);
-  function ShortNameEmoji(quill, options) {
-    var _this;
-    module_emoji_classCallCheck(this, ShortNameEmoji);
-    _this = _super.call(this, quill, options);
-    _this.emojiList = options.emojiList;
-    _this.fuse = new (fuse_default())(options.emojiList, options.fuse);
-    _this.quill = quill;
-    _this.onClose = options.onClose;
-    _this.onOpen = options.onOpen;
-    _this.container = document.createElement('ul');
-    _this.container.classList.add('emoji_completions');
-    _this.quill.container.appendChild(_this.container);
-    _this.container.style.position = "absolute";
-    _this.container.style.display = "none";
-    _this.onSelectionChange = _this.maybeUnfocus.bind(module_emoji_assertThisInitialized(_this));
-    _this.onTextChange = _this.update.bind(module_emoji_assertThisInitialized(_this));
-    _this.open = false;
-    _this.atIndex = null;
-    _this.focusedButton = null;
-    _this.isWhiteSpace = function (ch) {
+
+const Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
+class ShortNameEmoji extends Module {
+  constructor(quill, options) {
+    super(quill, options);
+    this.emojiList = options.emojiList;
+    this.fuse = new Fuse(options.emojiList, options.fuse);
+    this.quill = quill;
+    this.onClose = options.onClose;
+    this.onOpen = options.onOpen;
+    this.container = document.createElement('ul');
+    this.container.classList.add('emoji_completions');
+    this.quill.container.appendChild(this.container);
+    this.container.style.position = "absolute";
+    this.container.style.display = "none";
+    this.onSelectionChange = this.maybeUnfocus.bind(this);
+    this.onTextChange = this.update.bind(this);
+    this.open = false;
+    this.atIndex = null;
+    this.focusedButton = null;
+    this.isWhiteSpace = function (ch) {
       var whiteSpace = false;
       if (/\s/.test(ch)) {
         whiteSpace = true;
@@ -11580,220 +11545,179 @@ var ShortNameEmoji = /*#__PURE__*/function (_Module) {
       return whiteSpace;
     };
     quill.keyboard.addBinding({
-      // TODO: Once Quill supports using event.key change this to ":"
-      key: 186,
-      // ":" instead of 190 in Safari. Since it's the same key it doesn't matter if we register both.
+      key: ':',
       shiftKey: true
-    }, _this.triggerPicker.bind(module_emoji_assertThisInitialized(_this)));
+    }, this.triggerPicker.bind(this));
     quill.keyboard.addBinding({
-      key: 59,
-      // gecko based browsers (firefox) use 59 as the keycode for semicolon, which makes a colon character when combined with shift
-      shiftKey: true
-    }, _this.triggerPicker.bind(module_emoji_assertThisInitialized(_this)));
-    quill.keyboard.addBinding({
-      key: 39,
-      // ArrowRight
+      key: keys.DOWN,
       collapsed: true
-    }, _this.handleArrow.bind(module_emoji_assertThisInitialized(_this)));
-    quill.keyboard.addBinding({
-      key: 40,
-      // ArrowRight
-      collapsed: true
-    }, _this.handleArrow.bind(module_emoji_assertThisInitialized(_this)));
-    // TODO: Add keybindings for Enter (13) and Tab (9) directly on the quill editor
-    return _this;
+    }, this.handleArrow.bind(this));
+    quill.keyboard.bindings[keys.DOWN].unshift(quill.keyboard.bindings[keys.DOWN].pop());
   }
-  module_emoji_createClass(ShortNameEmoji, [{
-    key: "triggerPicker",
-    value: function triggerPicker(range, context) {
-      if (this.open) return true;
-      if (range.length > 0) {
-        this.quill.deleteText(range.index, range.length, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-      }
-      this.quill.insertText(range.index, ":", "emoji-shortname", (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-      var atSignBounds = this.quill.getBounds(range.index);
-      this.quill.setSelection(range.index + 1, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.SILENT);
-      this.atIndex = range.index;
-      var paletteMaxPos = atSignBounds.left + 250;
-      if (paletteMaxPos > this.quill.container.offsetWidth) {
-        this.container.style.left = atSignBounds.left - 250 + "px";
-      } else {
-        this.container.style.left = atSignBounds.left + "px";
-      }
-      this.container.style.top = atSignBounds.top + atSignBounds.height + "px";
-      this.open = true;
-      this.quill.on('text-change', this.onTextChange);
-      this.quill.once('selection-change', this.onSelectionChange);
-      this.onOpen && this.onOpen();
+  triggerPicker(range, context) {
+    if (this.open) return true;
+    if (range.length > 0) {
+      this.quill.deleteText(range.index, range.length, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
     }
-  }, {
-    key: "handleArrow",
-    value: function handleArrow() {
-      if (!this.open) return true;
-      this.buttons[0].classList.remove('emoji-active');
-      this.buttons[0].focus();
-      if (this.buttons.length > 1) {
-        this.buttons[1].focus();
-      }
+    this.quill.insertText(range.index, ":", "emoji-shortname", (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
+    const atSignBounds = this.quill.getBounds(range.index);
+    this.quill.setSelection(range.index + 1, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.SILENT);
+    this.atIndex = range.index;
+    let paletteMaxPos = atSignBounds.left + 250;
+    if (paletteMaxPos > this.quill.container.offsetWidth) {
+      this.container.style.left = atSignBounds.left - 250 + "px";
+    } else {
+      this.container.style.left = atSignBounds.left + "px";
     }
-  }, {
-    key: "update",
-    value: function update() {
-      var sel = this.quill.getSelection().index;
-      if (this.atIndex >= sel) {
-        // Deleted the at character
-        return this.close(null);
-      }
-      //Using: fuse.js
-      this.query = this.quill.getText(this.atIndex + 1, sel - this.atIndex - 1);
-      try {
-        if (event && this.isWhiteSpace(this.query)) {
-          this.close(null);
-          return;
-        }
-      } catch (e) {
-        console.warn(e);
-      }
-      this.query = this.query.trim();
-      var emojis = this.fuse.search(this.query);
-      emojis.sort(function (a, b) {
-        return a.emoji_order - b.emoji_order;
-      });
-      if (this.query.length < this.options.fuse.minMatchCharLength || emojis.length === 0) {
-        this.container.style.display = "none";
+    this.container.style.top = atSignBounds.top + atSignBounds.height + "px";
+    this.quill.on('text-change', this.onTextChange);
+    //this.quill.once('selection-change', this.onSelectionChange);
+
+    this.open = true;
+    this.onOpen && this.onOpen();
+  }
+  handleArrow() {
+    if (!this.open) return true;
+    this.buttons[0].classList.remove('emoji-active');
+    this.buttons[0].focus();
+    if (this.buttons.length > 1) {
+      this.buttons[1].focus();
+    }
+  }
+  update() {
+    const sel = this.quill.getSelection().index;
+    if (this.atIndex >= sel) {
+      // Deleted the at character
+      return this.close(null);
+    }
+    //Using: fuse.js
+    this.query = this.quill.getText(this.atIndex + 1, sel - this.atIndex - 1);
+    try {
+      if (event && this.isWhiteSpace(this.query)) {
+        this.close(null);
         return;
       }
-      if (emojis.length > 15) {
-        //return only 15
-        emojis = emojis.slice(0, 15);
-      }
-      this.renderCompletions(emojis);
+    } catch (e) {
+      console.warn(e);
     }
-  }, {
-    key: "maybeUnfocus",
-    value: function maybeUnfocus() {
-      if (this.container.querySelector("*:focus")) return;
-      this.close(null);
-    }
-  }, {
-    key: "renderCompletions",
-    value: function renderCompletions(emojis) {
-      var _this2 = this;
-      try {
-        if (event) {
-          if (event.key === "Enter" || event.keyCode === 13) {
-            this.close(emojis[0], 1);
-            this.container.style.display = "none";
-            return;
-          } else if (event.key === 'Tab' || event.keyCode === 9) {
-            this.quill.disable();
-            this.buttons[0].classList.remove('emoji-active');
-            this.buttons[1].focus();
-            return;
-          }
-        }
-      } catch (e) {
-        console.warn(e);
-      }
-      while (this.container.firstChild) {
-        this.container.removeChild(this.container.firstChild);
-      }
-      var buttons = Array(emojis.length);
-      this.buttons = buttons;
-      var handler = function handler(i, emoji) {
-        return function (event) {
-          if (event.key === "ArrowRight" || event.keyCode === 39) {
-            event.preventDefault();
-            buttons[Math.min(buttons.length - 1, i + 1)].focus();
-          } else if (event.key === 'Tab' || event.keyCode === 9) {
-            event.preventDefault();
-            if (i + 1 === buttons.length) {
-              buttons[0].focus();
-              return;
-            }
-            buttons[Math.min(buttons.length - 1, i + 1)].focus();
-          } else if (event.key === "ArrowLeft" || event.keyCode === 37) {
-            event.preventDefault();
-            buttons[Math.max(0, i - 1)].focus();
-          } else if (event.key === "ArrowDown" || event.keyCode === 40) {
-            event.preventDefault();
-            buttons[Math.min(buttons.length - 1, i + 1)].focus();
-          } else if (event.key === "ArrowUp" || event.keyCode === 38) {
-            event.preventDefault();
-            buttons[Math.max(0, i - 1)].focus();
-          } else if (event.key === "Enter" || event.keyCode === 13 || event.key === " " || event.keyCode === 32 || event.key === "Tab" || event.keyCode === 9) {
-            event.preventDefault();
-            _this2.quill.enable();
-            _this2.close(emoji);
-          }
-        };
-      };
-      emojis.forEach(function (emoji, i) {
-        var li = makeElement('li', {}, makeElement('button', {
-          type: "button"
-        }, makeElement("span", {
-          className: "button-emoji ap ap-" + emoji.name,
-          innerHTML: emoji.code_decimal
-        }),
-        //makeElement('span', {className: "matched"}, this.query),
-        //makeElement('span', {className: "unmatched"}, emoji.shortname.slice(this.query.length+1))
-        makeElement('span', {
-          className: "unmatched"
-        }, emoji.shortname)));
-        _this2.container.appendChild(li);
-        buttons[i] = li.firstChild;
-        // Events will be GC-ed with button on each re-render:
-        buttons[i].addEventListener('keydown', handler(i, emoji));
-        buttons[i].addEventListener("mousedown", function () {
-          return _this2.close(emoji);
-        });
-        buttons[i].addEventListener("focus", function () {
-          return _this2.focusedButton = i;
-        });
-        buttons[i].addEventListener("unfocus", function () {
-          return _this2.focusedButton = null;
-        });
-      });
-      this.container.style.display = "block";
-      //emoji palette on top
-      if (this.quill.container.classList.contains('top-emoji')) {
-        var x = this.container.querySelectorAll("li");
-        var i;
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = 'block';
-        }
-        var windowHeight = window.innerHeight;
-        var editorPos = this.quill.container.getBoundingClientRect().top;
-        if (editorPos > windowHeight / 2 && this.container.offsetHeight > 0) {
-          this.container.style.top = '-' + this.container.offsetHeight + "px";
-        }
-      }
-      buttons[0].classList.add('emoji-active');
-    }
-  }, {
-    key: "close",
-    value: function close(value) {
-      var _this3 = this;
-      var trailingDelete = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      this.quill.enable();
+    this.query = this.query.trim();
+    let emojis = this.fuse.search(this.query);
+    emojis = emojis.map(emoji => emoji.item).sort(function (a, b) {
+      return a.emoji_order - b.emoji_order;
+    });
+    if (this.query.length < this.options.fuse.minMatchCharLength || emojis.length === 0) {
       this.container.style.display = "none";
-      while (this.container.firstChild) this.container.removeChild(this.container.firstChild);
-      this.quill.off('selection-change', this.onSelectionChange);
-      this.quill.off('text-change', this.onTextChange);
-      if (value) {
-        this.quill.deleteText(this.atIndex, this.query.length + 1 + trailingDelete, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-        this.quill.insertEmbed(this.atIndex, 'emoji', value, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-        setTimeout(function () {
-          return _this3.quill.setSelection(_this3.atIndex + 1);
-        }, 0);
-      }
-      this.quill.focus();
-      this.open = false;
-      this.onClose && this.onClose(value);
+      return;
     }
-  }]);
-  return ShortNameEmoji;
-}(Module);
+    if (emojis.length > 15) {
+      //return only 15
+      emojis = emojis.slice(0, 15);
+    }
+    this.renderCompletions(emojis);
+  }
+  maybeUnfocus() {
+    if (this.container.querySelector("*:focus")) return;
+    this.close(null);
+  }
+  renderCompletions(emojis) {
+    try {
+      if (event) {
+        if (event.key === "Enter" || event.keyCode === 13) {
+          this.close(emojis[0], 1);
+          this.container.style.display = "none";
+          return;
+        } else if (event.key === 'Tab' || event.keyCode === 9) {
+          this.quill.disable();
+          this.buttons[0].classList.remove('emoji-active');
+          this.buttons[1].focus();
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+    while (this.container.firstChild) {
+      this.container.removeChild(this.container.firstChild);
+    }
+    const buttons = Array(emojis.length);
+    this.buttons = buttons;
+    const handler = (i, emoji) => event => {
+      if (event.key === "ArrowRight" || event.keyCode === 39) {
+        event.preventDefault();
+        buttons[Math.min(buttons.length - 1, i + 1)].focus();
+      } else if (event.key === 'Tab' || event.keyCode === 9) {
+        event.preventDefault();
+        if (i + 1 === buttons.length) {
+          buttons[0].focus();
+          return;
+        }
+        buttons[Math.min(buttons.length - 1, i + 1)].focus();
+      } else if (event.key === "ArrowLeft" || event.keyCode === 37) {
+        event.preventDefault();
+        buttons[Math.max(0, i - 1)].focus();
+      } else if (event.key === "ArrowDown" || event.keyCode === 40) {
+        event.preventDefault();
+        buttons[Math.min(buttons.length - 1, i + 1)].focus();
+      } else if (event.key === "ArrowUp" || event.keyCode === 38) {
+        event.preventDefault();
+        buttons[Math.max(0, i - 1)].focus();
+      } else if (event.key === "Enter" || event.keyCode === 13 || event.key === " " || event.keyCode === 32 || event.key === "Tab" || event.keyCode === 9) {
+        event.preventDefault();
+        this.quill.enable();
+        this.close(emoji);
+      }
+    };
+    emojis.forEach((emoji, i) => {
+      const li = makeElement('li', {}, makeElement('button', {
+        type: "button"
+      }, makeElement("span", {
+        className: "button-emoji ap ap-" + emoji.name,
+        innerHTML: emoji.code_decimal
+      }), makeElement('span', {
+        className: "unmatched"
+      }, emoji.shortname)));
+      this.container.appendChild(li);
+      buttons[i] = li.firstChild;
+      // Events will be GC-ed with button on each re-render:
+      buttons[i].addEventListener('keydown', handler(i, emoji));
+      buttons[i].addEventListener("mousedown", () => this.close(emoji));
+      buttons[i].addEventListener("focus", () => this.focusedButton = i);
+      buttons[i].addEventListener("unfocus", () => this.focusedButton = null);
+    });
+    this.container.style.display = "block";
+    //emoji palette on top
+    if (this.quill.container.classList.contains('top-emoji')) {
+      let x = this.container.querySelectorAll("li");
+      let i;
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = 'block';
+      }
+      let windowHeight = window.innerHeight;
+      let editorPos = this.quill.container.getBoundingClientRect().top;
+      if (editorPos > windowHeight / 2 && this.container.offsetHeight > 0) {
+        this.container.style.top = '-' + this.container.offsetHeight + "px";
+      }
+    }
+    buttons[0].classList.add('emoji-active');
+  }
+  close(value) {
+    let trailingDelete = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    this.quill.enable();
+    this.container.style.display = "none";
+    while (this.container.firstChild) this.container.removeChild(this.container.firstChild);
+    this.quill.off('selection-change', this.onSelectionChange);
+    this.quill.off('text-change', this.onTextChange);
+    if (value) {
+      this.quill.deleteText(this.atIndex, this.query.length + 1 + trailingDelete, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
+      this.quill.insertEmbed(this.atIndex, 'emoji', value, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
+      this.quill.insertText(this.atIndex + 1, ' ', (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
+      setTimeout(() => this.quill.setSelection(this.atIndex + 2), 0);
+    }
+    this.quill.focus();
+    this.open = false;
+    this.onClose && this.onClose(value);
+  }
+}
 ShortNameEmoji.DEFAULTS = {
   emojiList: emoji_list,
   fuse: {
@@ -11807,14 +11731,12 @@ ShortNameEmoji.DEFAULTS = {
   }
 };
 function makeElement(tag, attrs) {
-  var elem = document.createElement(tag);
-  Object.keys(attrs).forEach(function (key) {
-    return elem[key] = attrs[key];
-  });
+  const elem = document.createElement(tag);
+  Object.keys(attrs).forEach(key => elem[key] = attrs[key]);
   for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
     children[_key - 2] = arguments[_key];
   }
-  children.forEach(function (child) {
+  children.forEach(child => {
     if (typeof child === "string") child = document.createTextNode(child);
     elem.appendChild(child);
   });
@@ -11822,67 +11744,45 @@ function makeElement(tag, attrs) {
 }
 /* harmony default export */ const module_emoji = (ShortNameEmoji);
 ;// CONCATENATED MODULE: ./src/module-toolbar-emoji.js
-function module_toolbar_emoji_typeof(o) { "@babel/helpers - typeof"; return module_toolbar_emoji_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, module_toolbar_emoji_typeof(o); }
-function module_toolbar_emoji_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function module_toolbar_emoji_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, module_toolbar_emoji_toPropertyKey(descriptor.key), descriptor); } }
-function module_toolbar_emoji_createClass(Constructor, protoProps, staticProps) { if (protoProps) module_toolbar_emoji_defineProperties(Constructor.prototype, protoProps); if (staticProps) module_toolbar_emoji_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function module_toolbar_emoji_toPropertyKey(arg) { var key = module_toolbar_emoji_toPrimitive(arg, "string"); return module_toolbar_emoji_typeof(key) === "symbol" ? key : String(key); }
-function module_toolbar_emoji_toPrimitive(input, hint) { if (module_toolbar_emoji_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (module_toolbar_emoji_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function module_toolbar_emoji_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) module_toolbar_emoji_setPrototypeOf(subClass, superClass); }
-function module_toolbar_emoji_setPrototypeOf(o, p) { module_toolbar_emoji_setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return module_toolbar_emoji_setPrototypeOf(o, p); }
-function module_toolbar_emoji_createSuper(Derived) { var hasNativeReflectConstruct = module_toolbar_emoji_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = module_toolbar_emoji_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = module_toolbar_emoji_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return module_toolbar_emoji_possibleConstructorReturn(this, result); }; }
-function module_toolbar_emoji_possibleConstructorReturn(self, call) { if (call && (module_toolbar_emoji_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return module_toolbar_emoji_assertThisInitialized(self); }
-function module_toolbar_emoji_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function module_toolbar_emoji_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function module_toolbar_emoji_getPrototypeOf(o) { module_toolbar_emoji_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return module_toolbar_emoji_getPrototypeOf(o); }
 
 
 
-var module_toolbar_emoji_Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
-var ToolbarEmoji = /*#__PURE__*/function (_Module) {
-  module_toolbar_emoji_inherits(ToolbarEmoji, _Module);
-  var _super = module_toolbar_emoji_createSuper(ToolbarEmoji);
-  function ToolbarEmoji(quill, options) {
-    var _this;
-    module_toolbar_emoji_classCallCheck(this, ToolbarEmoji);
-    _this = _super.call(this, quill, options);
-    _this.quill = quill;
-    _this.toolbar = quill.getModule('toolbar');
-    if (typeof _this.toolbar !== 'undefined') _this.toolbar.addHandler('emoji', _this.checkPaletteExists);
+const module_toolbar_emoji_Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
+class ToolbarEmoji extends module_toolbar_emoji_Module {
+  constructor(quill, options) {
+    super(quill, options);
+    this.quill = quill;
+    this.toolbar = quill.getModule('toolbar');
+    if (typeof this.toolbar !== 'undefined') this.toolbar.addHandler('emoji', this.checkPaletteExists);
     var emojiBtns = document.getElementsByClassName('ql-emoji');
     if (emojiBtns) {
       [].slice.call(emojiBtns).forEach(function (emojiBtn) {
         emojiBtn.innerHTML = options.buttonIcon;
       });
     }
-    return _this;
   }
-  module_toolbar_emoji_createClass(ToolbarEmoji, [{
-    key: "checkPaletteExists",
-    value: function checkPaletteExists() {
-      var quill = this.quill;
-      fn_checkDialogOpen(quill);
-      this.quill.on('text-change', function (delta, oldDelta, source) {
-        if (source === 'user') {
-          fn_close();
-        }
-      });
-    }
-  }]);
-  return ToolbarEmoji;
-}(module_toolbar_emoji_Module);
+  checkPaletteExists() {
+    let quill = this.quill;
+    fn_checkDialogOpen(quill);
+    this.quill.on('text-change', function (delta, oldDelta, source) {
+      if (source === 'user') {
+        fn_close();
+      }
+    });
+  }
+}
 ToolbarEmoji.DEFAULTS = {
   buttonIcon: '<svg viewbox="0 0 18 18"><circle class="ql-fill" cx="7" cy="7" r="1"></circle><circle class="ql-fill" cx="11" cy="7" r="1"></circle><path class="ql-stroke" d="M7,10a2,2,0,0,0,4,0H7Z"></path><circle class="ql-stroke" cx="9" cy="9" r="6"></circle></svg>'
 };
 function fn_close() {
-  var ele_emoji_plate = document.getElementById('emoji-palette');
+  let ele_emoji_plate = document.getElementById('emoji-palette');
   document.getElementById('emoji-close-div').style.display = "none";
   if (ele_emoji_plate) {
     ele_emoji_plate.remove();
   }
 }
 function fn_checkDialogOpen(quill) {
-  var elementExists = document.getElementById("emoji-palette");
+  let elementExists = document.getElementById("emoji-palette");
   if (elementExists) {
     elementExists.remove();
   } else {
@@ -11890,25 +11790,25 @@ function fn_checkDialogOpen(quill) {
   }
 }
 function fn_showEmojiPalette(quill) {
-  var paletteWidthAndHeight = 250;
-  var ele_emoji_area = document.createElement('div');
-  var selection = quill.getSelection();
-  var selectionBounds = quill.getBounds(selection.index);
-  var editorBounds = quill.container.getBoundingClientRect();
-  var selectionCenter = (selectionBounds.left + selectionBounds.right) / 2;
-  var selectionMiddle = (selectionBounds.top + selectionBounds.bottom) / 2;
-  var paletteLeft = editorBounds.left + selectionCenter + paletteWidthAndHeight <= document.documentElement.clientWidth ? selectionCenter : editorBounds.left - paletteWidthAndHeight;
-  var paletteTop = editorBounds.top + selectionMiddle + paletteWidthAndHeight + 10 <= document.documentElement.clientHeight ? selectionMiddle + 10 : editorBounds.top + selectionMiddle - paletteWidthAndHeight - 10 >= 0 ? selectionMiddle - paletteWidthAndHeight - 10 : document.documentElement.clientHeight - paletteWidthAndHeight - editorBounds.top;
+  const paletteWidthAndHeight = 250;
+  let ele_emoji_area = document.createElement('div');
+  let selection = quill.getSelection();
+  const selectionBounds = quill.getBounds(selection.index);
+  const editorBounds = quill.container.getBoundingClientRect();
+  const selectionCenter = (selectionBounds.left + selectionBounds.right) / 2;
+  const selectionMiddle = (selectionBounds.top + selectionBounds.bottom) / 2;
+  const paletteLeft = editorBounds.left + selectionCenter + paletteWidthAndHeight <= document.documentElement.clientWidth ? selectionCenter : editorBounds.left - paletteWidthAndHeight;
+  const paletteTop = editorBounds.top + selectionMiddle + paletteWidthAndHeight + 10 <= document.documentElement.clientHeight ? selectionMiddle + 10 : editorBounds.top + selectionMiddle - paletteWidthAndHeight - 10 >= 0 ? selectionMiddle - paletteWidthAndHeight - 10 : document.documentElement.clientHeight - paletteWidthAndHeight - editorBounds.top;
   quill.container.appendChild(ele_emoji_area);
   ele_emoji_area.id = 'emoji-palette';
-  ele_emoji_area.style.left = "".concat(paletteLeft, "px");
-  ele_emoji_area.style.top = "".concat(paletteTop, "px");
-  var tabToolbar = document.createElement('div');
+  ele_emoji_area.style.left = `${paletteLeft}px`;
+  ele_emoji_area.style.top = `${paletteTop}px`;
+  let tabToolbar = document.createElement('div');
   tabToolbar.id = "tab-toolbar";
   ele_emoji_area.appendChild(tabToolbar);
 
   //panel
-  var panel = document.createElement('div');
+  let panel = document.createElement('div');
   panel.id = "tab-panel";
   ele_emoji_area.appendChild(panel);
   var emojiType = [{
@@ -11944,10 +11844,10 @@ function fn_showEmojiPalette(quill) {
     'name': 'flags',
     'content': '<div class="i-flags"></div>'
   }];
-  var tabElementHolder = document.createElement('ul');
+  let tabElementHolder = document.createElement('ul');
   tabToolbar.appendChild(tabElementHolder);
   if (document.getElementById('emoji-close-div') === null) {
-    var closeDiv = document.createElement('div');
+    let closeDiv = document.createElement('div');
     closeDiv.id = 'emoji-close-div';
     closeDiv.addEventListener("click", fn_close, false);
     document.getElementsByTagName('body')[0].appendChild(closeDiv);
@@ -11956,15 +11856,15 @@ function fn_showEmojiPalette(quill) {
   }
   emojiType.map(function (emojiType) {
     //add tab bar
-    var tabElement = document.createElement('li');
+    let tabElement = document.createElement('li');
     tabElement.classList.add('emoji-tab');
     tabElement.classList.add('filter-' + emojiType.name);
     tabElement.innerHTML = emojiType.content;
     tabElement.dataset.filter = emojiType.type;
     tabElementHolder.appendChild(tabElement);
-    var emojiFilter = document.querySelector('.filter-' + emojiType.name);
+    let emojiFilter = document.querySelector('.filter-' + emojiType.name);
     emojiFilter.addEventListener('click', function () {
-      var tab = document.querySelector('.active');
+      let tab = document.querySelector('.active');
       if (tab) {
         tab.classList.remove('active');
       }
@@ -11979,7 +11879,7 @@ function fn_emojiPanelInit(panel, quill) {
   document.querySelector('.filter-people').classList.add('active');
 }
 function fn_emojiElementsToPanel(type, panel, quill) {
-  var fuseOptions = {
+  let fuseOptions = {
     shouldSort: true,
     matchAllTokens: true,
     threshold: 0.3,
@@ -11989,25 +11889,25 @@ function fn_emojiElementsToPanel(type, panel, quill) {
     minMatchCharLength: 3,
     keys: ["category"]
   };
-  var fuse = new (fuse_default())(emoji_list, fuseOptions);
-  var result = fuse.search(type);
-  result.sort(function (a, b) {
+  let fuse = new Fuse(emoji_list, fuseOptions);
+  let result = fuse.search(type);
+  result = result.map(r => r.item).sort(function (a, b) {
     return a.emoji_order - b.emoji_order;
   });
   quill.focus();
-  var range = quill.getSelection();
+  let range = quill.getSelection();
   result.map(function (emoji) {
-    var span = document.createElement('span');
-    var t = document.createTextNode(emoji.shortname);
+    let span = document.createElement('span');
+    let t = document.createTextNode(emoji.shortname);
     span.appendChild(t);
     span.classList.add('bem');
     span.classList.add('bem-' + emoji.name);
     span.classList.add('ap');
     span.classList.add('ap-' + emoji.name);
-    var output = '' + emoji.code_decimal + '';
+    let output = '' + emoji.code_decimal + '';
     span.innerHTML = output + ' ';
     panel.appendChild(span);
-    var customButton = document.querySelector('.bem-' + emoji.name);
+    let customButton = document.querySelector('.bem-' + emoji.name);
     if (customButton) {
       customButton.addEventListener('click', function () {
         module_toolbar_emoji_makeElement("span", {
@@ -12015,9 +11915,7 @@ function fn_emojiElementsToPanel(type, panel, quill) {
           innerHTML: '' + emoji.code_decimal + ' '
         });
         quill.insertEmbed(range.index, 'emoji', emoji, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-        setTimeout(function () {
-          return quill.setSelection(range.index + 1);
-        }, 0);
+        setTimeout(() => quill.setSelection(range.index + 1), 0);
         fn_close();
       });
     }
@@ -12027,18 +11925,16 @@ function fn_updateEmojiContainer(emojiFilter, panel, quill) {
   while (panel.firstChild) {
     panel.removeChild(panel.firstChild);
   }
-  var type = emojiFilter.dataset.filter;
+  let type = emojiFilter.dataset.filter;
   fn_emojiElementsToPanel(type, panel, quill);
 }
 function module_toolbar_emoji_makeElement(tag, attrs) {
-  var elem = document.createElement(tag);
-  Object.keys(attrs).forEach(function (key) {
-    return elem[key] = attrs[key];
-  });
+  const elem = document.createElement(tag);
+  Object.keys(attrs).forEach(key => elem[key] = attrs[key]);
   for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
     children[_key - 2] = arguments[_key];
   }
-  children.forEach(function (child) {
+  children.forEach(child => {
     if (typeof child === "string") child = document.createTextNode(child);
     elem.appendChild(child);
   });
@@ -12046,146 +11942,124 @@ function module_toolbar_emoji_makeElement(tag, attrs) {
 }
 /* harmony default export */ const module_toolbar_emoji = (ToolbarEmoji);
 ;// CONCATENATED MODULE: ./src/module-textarea-emoji.js
-function module_textarea_emoji_typeof(o) { "@babel/helpers - typeof"; return module_textarea_emoji_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, module_textarea_emoji_typeof(o); }
-function module_textarea_emoji_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function module_textarea_emoji_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, module_textarea_emoji_toPropertyKey(descriptor.key), descriptor); } }
-function module_textarea_emoji_createClass(Constructor, protoProps, staticProps) { if (protoProps) module_textarea_emoji_defineProperties(Constructor.prototype, protoProps); if (staticProps) module_textarea_emoji_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function module_textarea_emoji_toPropertyKey(arg) { var key = module_textarea_emoji_toPrimitive(arg, "string"); return module_textarea_emoji_typeof(key) === "symbol" ? key : String(key); }
-function module_textarea_emoji_toPrimitive(input, hint) { if (module_textarea_emoji_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (module_textarea_emoji_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function module_textarea_emoji_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) module_textarea_emoji_setPrototypeOf(subClass, superClass); }
-function module_textarea_emoji_setPrototypeOf(o, p) { module_textarea_emoji_setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return module_textarea_emoji_setPrototypeOf(o, p); }
-function module_textarea_emoji_createSuper(Derived) { var hasNativeReflectConstruct = module_textarea_emoji_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = module_textarea_emoji_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = module_textarea_emoji_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return module_textarea_emoji_possibleConstructorReturn(this, result); }; }
-function module_textarea_emoji_possibleConstructorReturn(self, call) { if (call && (module_textarea_emoji_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return module_textarea_emoji_assertThisInitialized(self); }
-function module_textarea_emoji_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function module_textarea_emoji_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function module_textarea_emoji_getPrototypeOf(o) { module_textarea_emoji_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return module_textarea_emoji_getPrototypeOf(o); }
 
 
 
-var Delta = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('delta');
-var module_textarea_emoji_Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
-var TextAreaEmoji = /*#__PURE__*/function (_Module) {
-  module_textarea_emoji_inherits(TextAreaEmoji, _Module);
-  var _super = module_textarea_emoji_createSuper(TextAreaEmoji);
-  function TextAreaEmoji(quill, options) {
-    var _this;
-    module_textarea_emoji_classCallCheck(this, TextAreaEmoji);
-    _this = _super.call(this, quill, options);
-    _this.quill = quill;
-    _this.container = document.createElement('div');
-    _this.container.classList.add('textarea-emoji-control');
-    _this.container.style.position = "absolute";
-    _this.container.innerHTML = options.buttonIcon;
-    _this.quill.container.appendChild(_this.container);
-    _this.container.addEventListener('click', _this.checkEmojiBoxExist.bind(module_textarea_emoji_assertThisInitialized(_this)), false);
-    return _this;
+const Delta = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('delta');
+const module_textarea_emoji_Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()["import"]('core/module');
+class TextAreaEmoji extends module_textarea_emoji_Module {
+  constructor(quill, options) {
+    super(quill, options);
+    this.quill = quill;
+    this.container = document.createElement('div');
+    this.container.classList.add('textarea-emoji-control');
+    this.container.style.position = "absolute";
+    this.container.innerHTML = options.buttonIcon;
+    this.quill.container.appendChild(this.container);
+    this.container.addEventListener('click', this.checkEmojiBoxExist.bind(this), false);
   }
-  module_textarea_emoji_createClass(TextAreaEmoji, [{
-    key: "checkEmojiBoxExist",
-    value: function checkEmojiBoxExist() {
-      var elementExists = document.getElementById("textarea-emoji");
-      if (elementExists) {
-        elementExists.remove();
+  checkEmojiBoxExist() {
+    let elementExists = document.getElementById("textarea-emoji");
+    if (elementExists) {
+      elementExists.remove();
+    } else {
+      let ele_emoji_area = document.createElement('div');
+      ele_emoji_area.id = 'textarea-emoji';
+      this.quill.container.appendChild(ele_emoji_area);
+      let tabToolbar = document.createElement('div');
+      tabToolbar.id = "tab-toolbar";
+      ele_emoji_area.appendChild(tabToolbar);
+      var emojiType = [{
+        'type': 'p',
+        'name': 'people',
+        'content': '<div class="i-people"></div>'
+      }, {
+        'type': 'n',
+        'name': 'nature',
+        'content': '<div class="i-nature"></div>'
+      }, {
+        'type': 'd',
+        'name': 'food',
+        'content': '<div class="i-food"></div>'
+      }, {
+        'type': 's',
+        'name': 'symbols',
+        'content': '<div class="i-symbols"></div>'
+      }, {
+        'type': 'a',
+        'name': 'activity',
+        'content': '<div class="i-activity"></div>'
+      }, {
+        'type': 't',
+        'name': 'travel',
+        'content': '<div class="i-travel"></div>'
+      }, {
+        'type': 'o',
+        'name': 'objects',
+        'content': '<div class="i-objects"></div>'
+      }, {
+        'type': 'f',
+        'name': 'flags',
+        'content': '<div class="i-flags"></div>'
+      }];
+      let tabElementHolder = document.createElement('ul');
+      tabToolbar.appendChild(tabElementHolder);
+      if (document.getElementById('emoji-close-div') === null) {
+        let closeDiv = document.createElement('div');
+        closeDiv.id = 'emoji-close-div';
+        closeDiv.addEventListener("click", module_textarea_emoji_fn_close, false);
+        document.getElementsByTagName('body')[0].appendChild(closeDiv);
       } else {
-        var ele_emoji_area = document.createElement('div');
-        ele_emoji_area.id = 'textarea-emoji';
-        this.quill.container.appendChild(ele_emoji_area);
-        var tabToolbar = document.createElement('div');
-        tabToolbar.id = "tab-toolbar";
-        ele_emoji_area.appendChild(tabToolbar);
-        var emojiType = [{
-          'type': 'p',
-          'name': 'people',
-          'content': '<div class="i-people"></div>'
-        }, {
-          'type': 'n',
-          'name': 'nature',
-          'content': '<div class="i-nature"></div>'
-        }, {
-          'type': 'd',
-          'name': 'food',
-          'content': '<div class="i-food"></div>'
-        }, {
-          'type': 's',
-          'name': 'symbols',
-          'content': '<div class="i-symbols"></div>'
-        }, {
-          'type': 'a',
-          'name': 'activity',
-          'content': '<div class="i-activity"></div>'
-        }, {
-          'type': 't',
-          'name': 'travel',
-          'content': '<div class="i-travel"></div>'
-        }, {
-          'type': 'o',
-          'name': 'objects',
-          'content': '<div class="i-objects"></div>'
-        }, {
-          'type': 'f',
-          'name': 'flags',
-          'content': '<div class="i-flags"></div>'
-        }];
-        var tabElementHolder = document.createElement('ul');
-        tabToolbar.appendChild(tabElementHolder);
-        if (document.getElementById('emoji-close-div') === null) {
-          var closeDiv = document.createElement('div');
-          closeDiv.id = 'emoji-close-div';
-          closeDiv.addEventListener("click", module_textarea_emoji_fn_close, false);
-          document.getElementsByTagName('body')[0].appendChild(closeDiv);
-        } else {
-          document.getElementById('emoji-close-div').style.display = "block";
-        }
-        var panel = document.createElement('div');
-        panel.id = "tab-panel";
-        ele_emoji_area.appendChild(panel);
-        var innerQuill = this.quill;
-        emojiType.map(function (emojiType) {
-          var tabElement = document.createElement('li');
-          tabElement.classList.add('emoji-tab');
-          tabElement.classList.add('filter-' + emojiType.name);
-          var tabValue = emojiType.content;
-          tabElement.innerHTML = tabValue;
-          tabElement.dataset.filter = emojiType.type;
-          tabElementHolder.appendChild(tabElement);
-          var emojiFilter = document.querySelector('.filter-' + emojiType.name);
-          emojiFilter.addEventListener('click', function () {
-            var emojiContainer = document.getElementById("textarea-emoji");
-            var tab = emojiContainer && emojiContainer.querySelector('.active');
-            if (tab) {
-              tab.classList.remove('active');
-            }
-            emojiFilter.classList.toggle('active');
-            while (panel.firstChild) {
-              panel.removeChild(panel.firstChild);
-            }
-            var type = emojiFilter.dataset.filter;
-            module_textarea_emoji_fn_emojiElementsToPanel(type, panel, innerQuill);
-          });
-        });
-        var windowHeight = window.innerHeight;
-        var editorPos = this.quill.container.getBoundingClientRect().top;
-        if (editorPos > windowHeight / 2) {
-          ele_emoji_area.style.top = '-250px';
-        }
-        module_textarea_emoji_fn_emojiPanelInit(panel, this.quill);
+        document.getElementById('emoji-close-div').style.display = "block";
       }
+      let panel = document.createElement('div');
+      panel.id = "tab-panel";
+      ele_emoji_area.appendChild(panel);
+      let innerQuill = this.quill;
+      emojiType.map(function (emojiType) {
+        let tabElement = document.createElement('li');
+        tabElement.classList.add('emoji-tab');
+        tabElement.classList.add('filter-' + emojiType.name);
+        let tabValue = emojiType.content;
+        tabElement.innerHTML = tabValue;
+        tabElement.dataset.filter = emojiType.type;
+        tabElementHolder.appendChild(tabElement);
+        let emojiFilter = document.querySelector('.filter-' + emojiType.name);
+        emojiFilter.addEventListener('click', function () {
+          const emojiContainer = document.getElementById("textarea-emoji");
+          const tab = emojiContainer && emojiContainer.querySelector('.active');
+          if (tab) {
+            tab.classList.remove('active');
+          }
+          emojiFilter.classList.toggle('active');
+          while (panel.firstChild) {
+            panel.removeChild(panel.firstChild);
+          }
+          let type = emojiFilter.dataset.filter;
+          module_textarea_emoji_fn_emojiElementsToPanel(type, panel, innerQuill);
+        });
+      });
+      let windowHeight = window.innerHeight;
+      let editorPos = this.quill.container.getBoundingClientRect().top;
+      if (editorPos > windowHeight / 2) {
+        ele_emoji_area.style.top = '-250px';
+      }
+      module_textarea_emoji_fn_emojiPanelInit(panel, this.quill);
     }
-  }]);
-  return TextAreaEmoji;
-}(module_textarea_emoji_Module);
+  }
+}
 TextAreaEmoji.DEFAULTS = {
   buttonIcon: '<svg viewbox="0 0 18 18"><circle class="ql-fill" cx="7" cy="7" r="1"></circle><circle class="ql-fill" cx="11" cy="7" r="1"></circle><path class="ql-stroke" d="M7,10a2,2,0,0,0,4,0H7Z"></path><circle class="ql-stroke" cx="9" cy="9" r="6"></circle></svg>'
 };
 function module_textarea_emoji_fn_close() {
-  var ele_emoji_plate = document.getElementById('textarea-emoji');
+  let ele_emoji_plate = document.getElementById('textarea-emoji');
   document.getElementById('emoji-close-div').style.display = "none";
   if (ele_emoji_plate) {
     ele_emoji_plate.remove();
   }
 }
 function fn_updateRange(quill) {
-  var range = quill.getSelection();
+  let range = quill.getSelection();
   return range;
 }
 function module_textarea_emoji_fn_emojiPanelInit(panel, quill) {
@@ -12193,7 +12067,7 @@ function module_textarea_emoji_fn_emojiPanelInit(panel, quill) {
   document.querySelector('.filter-people').classList.add('active');
 }
 function module_textarea_emoji_fn_emojiElementsToPanel(type, panel, quill) {
-  var fuseOptions = {
+  let fuseOptions = {
     shouldSort: true,
     matchAllTokens: true,
     threshold: 0.3,
@@ -12203,34 +12077,32 @@ function module_textarea_emoji_fn_emojiElementsToPanel(type, panel, quill) {
     minMatchCharLength: 3,
     keys: ["category"]
   };
-  var fuse = new (fuse_default())(emoji_list, fuseOptions);
-  var result = fuse.search(type);
-  result.sort(function (a, b) {
+  let fuse = new Fuse(emoji_list, fuseOptions);
+  let result = fuse.search(type);
+  results = result.map(r => r.item).sort(function (a, b) {
     return a.emoji_order - b.emoji_order;
   });
   quill.focus();
-  var range = fn_updateRange(quill);
+  let range = fn_updateRange(quill);
   result.map(function (emoji) {
-    var span = document.createElement('span');
-    var t = document.createTextNode(emoji.shortname);
+    let span = document.createElement('span');
+    let t = document.createTextNode(emoji.shortname);
     span.appendChild(t);
     span.classList.add('bem');
     span.classList.add('bem-' + emoji.name);
     span.classList.add('ap');
     span.classList.add('ap-' + emoji.name);
-    var output = '' + emoji.code_decimal + '';
+    let output = '' + emoji.code_decimal + '';
     span.innerHTML = output + ' ';
     panel.appendChild(span);
-    var customButton = document.querySelector('.bem-' + emoji.name);
+    let customButton = document.querySelector('.bem-' + emoji.name);
     if (customButton) {
       customButton.addEventListener('click', function () {
         // quill.insertText(range.index, customButton.innerHTML);
         // quill.setSelection(range.index + customButton.innerHTML.length, 0);
         // range.index = range.index + customButton.innerHTML.length;
         quill.insertEmbed(range.index, 'emoji', emoji, (external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default()).sources.USER);
-        setTimeout(function () {
-          return quill.setSelection(range.index + 1);
-        }, 0);
+        setTimeout(() => quill.setSelection(range.index + 1), 0);
         module_textarea_emoji_fn_close();
       });
     }

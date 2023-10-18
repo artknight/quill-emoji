@@ -40,9 +40,9 @@
   },
   "homepage": "https://github.com/contentco/quill-emoji#readme",
   "dependencies": {
-    "emoji-data-css": "^1.0.1",
-    "fuse.js": "^3.3.0",
-    "parchment": "^1.1.4"
+    "emoji-data-css": "*",
+    "fuse.js": "*",
+    "parchment": "*"
   },
   "peerDependencies": {
     "quill": "^2.0.0-dev.3"

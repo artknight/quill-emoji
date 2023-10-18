@@ -146,7 +146,7 @@ function fn_emojiElementsToPanel(type, panel, quill) {
   };
   let fuse = new Fuse(emojiList, fuseOptions);
   let result = fuse.search(type);
-  result.sort(function (a, b) {
+  result = result.map(r => r.item).sort(function (a, b) {
     return a.emoji_order - b.emoji_order;
   });
 
